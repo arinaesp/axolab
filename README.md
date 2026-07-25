@@ -66,6 +66,6 @@ The only official axo channels are the Telegram Mini App, the axo Telegram group
 
 Arina Bolotbekova — developer, methodology creator, and lesson author.
 
-Source is published for portfolio and transparency purposes. The brand, mascot, lesson content, and methodology are not licensed for reuse — see [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html).
+The brand, mascot, lesson content, and methodology are not licensed for reuse — see [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html).
 
 Contact: [@axo_manager](https://t.me/axo_manager) on Telegram
