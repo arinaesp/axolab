@@ -433,13 +433,33 @@
       btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
     });
 
-    // ?lang= — the Mini App's splash footer builds it from the language the
-    // app is already running in, so a parent reading axo in English is not
-    // dropped onto the Russian text with a toggle to find. Only ru and en
-    // exist here; anything else (or no parameter at all) keeps the RU
-    // default the page ships with, and the toggle still works either way.
+    // Language on arrival, in order of authority:
+    //   1. ?lang= - an explicit signal from whoever built the link. The Mini
+    //      App's splash footer sends the language the game is already running
+    //      in, so it has to outrank whatever the phone happens to be set to.
+    //   2. The device language, so a reader anywhere lands on a page they can
+    //      read rather than on Russian with a toggle to hunt for.
+    //   3. Russian, the language these pages are written in first.
+    // Nothing is remembered between visits: this repo keeps localStorage out,
+    // and the toggle sits on every screen anyway.
+    // ky/kk/uz/be map to Russian because those readers are far likelier to
+    // read Russian than English. Ukrainian is deliberately NOT in that list.
+    const RU_LOCALES = ['ru', 'ky', 'kk', 'uz', 'be'];
+
+    function deviceLang() {
+      const tags = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || ''];
+      for (const tag of tags) {
+        const base = String(tag).toLowerCase().split('-')[0];
+        if (RU_LOCALES.indexOf(base) !== -1) return 'ru';
+        if (base) return 'en';
+      }
+      return 'ru';
+    }
+
     const requested = new URLSearchParams(location.search).get('lang');
-    if (requested === 'ru' || requested === 'en') setLang(requested);
+    setLang(requested === 'ru' || requested === 'en' ? requested : deviceLang());
   </script>
 </body>
 </html>
