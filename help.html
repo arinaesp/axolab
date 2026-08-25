@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>axo – Как играть</title>
+  <meta name="description" content="Пошаговая инструкция: как проходит игра axo, экран за экраном.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Caprasimo&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brown: #693B37;
+      --cream: #F5F2EB;
+      --orange: #E07A3E;
+      --accent-700: #99501B;
+      --neutral-100: #ECE7DC;
+      --neutral-400: #C7BEAE;
+      --neutral-700: #645C50;
+      --muted: #6F6156;
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --font-display: 'M PLUS Rounded 1c', 'Nunito', sans-serif;
+      --font-brand: 'Caprasimo', serif;
+      --font-body: 'Figtree', 'Nunito Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--orange); }
+    a:hover { text-decoration: none; }
+
+    :focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245, 242, 235, 0.92);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      min-height: 44px;
+    }
+
+    .brand img { width: 26px; height: 26px; object-fit: contain; }
+
+    .brand span {
+      font-family: var(--font-brand);
+      font-size: 22px;
+      color: var(--brown);
+      line-height: 1;
+    }
+
+    .lang-toggle {
+      position: relative;
+      display: flex;
+      background: var(--neutral-100);
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    .lang-thumb {
+      position: absolute;
+      top: 3px; bottom: 3px; left: 3px;
+      width: calc(50% - 3px);
+      background: var(--brown);
+      border-radius: 999px;
+      transition: transform 0.25s var(--spring);
+    }
+
+    .lang-toggle[data-active="en"] .lang-thumb { transform: translateX(100%); }
+
+    .lang-btn {
+      position: relative;
+      z-index: 1;
+      border: 0;
+      background: transparent;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 0 16px;
+      min-height: 40px;
+      min-width: 52px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .lang-btn.active { color: var(--cream); }
+
+    /* ---------- Guide layout ---------- */
+    .guide-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+
+    .guide-content h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .guide-lede {
+      font-size: 17px;
+      color: var(--neutral-700);
+      margin-bottom: 28px;
+    }
+
+    .guide-content p { color: var(--neutral-700); }
+    .guide-content strong { color: var(--brown); font-weight: 700; }
+
+    /* ---------- One step ---------- */
+    .step-block {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 2px solid var(--neutral-100);
+    }
+
+    .step-block:first-of-type { border-top: 0; padding-top: 0; }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: var(--cream);
+      font-family: var(--font-brand);
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .step-head h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .step-intro { margin-bottom: 18px; }
+
+    /* ---------- Screenshot with numbered pins ---------- */
+    .shot-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--neutral-100);
+      box-shadow: 0 4px 18px rgba(46, 43, 37, 0.14);
+      line-height: 0;
+    }
+
+    .shot-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Placeholder shown until the real screenshot file exists. */
+    .shot-frame.is-empty {
+      border: 2px dashed var(--neutral-400);
+      box-shadow: none;
+      aspect-ratio: 9 / 16;
+      max-height: 420px;
+    }
+
+    .shot-frame.is-empty img,
+    .shot-frame.is-empty .pin { display: none; }
+
+    .shot-empty-label {
+      display: none;
+      position: absolute;
+      inset: 0;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .shot-frame.is-empty .shot-empty-label { display: grid; }
+
+    .pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      border: 2px solid #fff;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1;
+      box-shadow: 0 2px 8px rgba(46, 43, 37, 0.35);
+      z-index: 2;
+    }
+
+    .pin::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid var(--orange);
+      opacity: 0.55;
+      animation: pinPulse 2.2s ease-out infinite;
+    }
+
+    @keyframes pinPulse {
+      0%   { transform: scale(0.85); opacity: 0.55; }
+      70%  { transform: scale(1.35); opacity: 0; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    .pin-legend {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+
+    .pin-legend li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--neutral-700);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .pin-num {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    /* ---------- Notes and closing ---------- */
+    .note-card {
+      background: var(--neutral-100);
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .note-card p { margin-bottom: 8px; }
+    .note-card p:last-child { margin-bottom: 0; }
+
+    .guide-close { margin-top: 48px; }
+
+    .guide-close h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brown);
+      color: var(--cream);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      padding: 14px 26px;
+      min-height: 44px;
+      border-radius: 999px;
+      transition: background 0.25s ease, transform 0.25s var(--spring);
+    }
+
+    .cta:hover, .cta:focus-visible {
+      background: var(--orange);
+      transform: translateY(-1px);
+    }
+
+    .cta--ghost {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--brown);
+      font-weight: 600;
+    }
+
+    .cta--ghost:hover, .cta--ghost:focus-visible {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      color: var(--orange);
+      margin-top: 40px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .site-footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 0 20px 32px;
+    }
+
+    .site-footer a { color: var(--muted); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="axo">
+        <img src="assets/icons/axo-new.svg" alt="" width="26" height="26">
+        <span>axo</span>
+      </a>
+      <div class="lang-toggle" data-active="ru" role="group" aria-label="Язык / Language">
+        <span class="lang-thumb" aria-hidden="true"></span>
+        <button type="button" class="lang-btn active" data-lang-btn="ru" aria-pressed="true">RU</button>
+        <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!--
+    Screenshots go in assets/screens/ with these exact names:
+      01-home.png  02-animal.png  03-map.png  04-learn.png  05-challenge.png
+    Until a file exists, its frame shows a dashed placeholder instead of a broken image.
+
+    Pin positions are the two custom properties on each .pin: --x is distance
+    from the left edge, --y from the top, both as a percentage of the image.
+    They scale with the image, so they stay put on every screen size. The values
+    below are estimates - once the real screenshots are in place, nudge each
+    percentage until the pin sits on the element it names.
+  -->
+
+  <main class="guide-content" id="content-ru">
+    <h1>Как играть в axo</h1>
+    <p class="guide-lede">Пять экранов, которые ребёнок видит с самого начала. Посмотрите один раз – дальше он справится сам.</p>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">1</span>
+        <h2>Начальный экран</h2>
+      </div>
+      <p class="step-intro">Первое, что открывается. Ребёнок пишет своё имя и нажимает «Играть».</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/01-home.png" alt="Начальный экран axo: аксолотль, поле для имени и кнопка «Играть».">
+          <span class="shot-empty-label">Скриншот начального экрана<br>(assets/screens/01-home.png)</span>
+          <span class="pin" style="--x:50%; --y:30%">1</span>
+          <span class="pin" style="--x:50%; --y:57%">2</span>
+          <span class="pin" style="--x:50%; --y:70%">3</span>
+          <span class="pin" style="--x:88%; --y:8%">4</span>
+          <span class="pin" style="--x:50%; --y:90%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Аксолотль axo – герой и талисман игры.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Поле для имени. Только имя, ничего больше – оно нужно, чтобы игра здоровалась с ребёнком и хранила его результаты на этом устройстве.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Кнопка «Играть». С неё начинается всё.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Глобус – выбор языка подсказок. Доступны 11 языков. Английский при этом всегда остаётся языком самой игры.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Номер версии и ссылки «Конфиденциальность · Условия».</li>
+        </ol>
+      </figure>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">2</span>
+        <h2>Выбор героя</h2>
+      </div>
+      <p class="step-intro">Ребёнок выбирает животное, которым будет играть. В начале открыты трое: медведь, хомяк и кролик.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/02-animal.png" alt="Экран выбора животного: медведь, хомяк и кролик, ниже закрытые герои.">
+          <span class="shot-empty-label">Скриншот выбора героя<br>(assets/screens/02-animal.png)</span>
+          <span class="pin" style="--x:26%; --y:38%">1</span>
+          <span class="pin" style="--x:50%; --y:62%">2</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Доступные герои. Выбор ни на что не влияет в игре – это просто «мой персонаж».</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Закрытые герои. Каждый открывается, когда ребёнок проходит определённый уровень. Это и есть награда за пройденный уровень.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p>Выбор героя появляется каждый раз, когда ребёнок начинает игру заново – многим детям это нравится больше, чем сам уровень.</p>
+      </div>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">3</span>
+        <h2>Карта мира</h2>
+      </div>
+      <p class="step-intro">Весь путь на одном экране, без прокрутки. Четыре острова – четыре этапа игры.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/03-map.png" alt="Карта мира axo: четыре острова-зоны с пронумерованными точками уровней.">
+          <span class="shot-empty-label">Скриншот карты мира<br>(assets/screens/03-map.png)</span>
+          <span class="pin" style="--x:27%; --y:30%">1</span>
+          <span class="pin" style="--x:73%; --y:30%">2</span>
+          <span class="pin" style="--x:27%; --y:44%">3</span>
+          <span class="pin" style="--x:50%; --y:88%">4</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Остров «Start» – здесь ребёнок начинает. Точки на дорожке это уровни: пройденные отмечены галочкой, текущий светится.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Закрытый остров под замком. Откроется, когда ребёнок дойдёт до него. Замок здесь как обещание, а не как преграда: нажимать на него не нужно.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Значок острова. Ребёнок получает его, когда проходит остров целиком, и оставляет себе навсегда.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Большая кнопка «Вперёд». Всегда продолжает с того места, где ребёнок остановился.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p>На карту можно вернуться в любой момент по значку карты. Нажатие на уже пройденный уровень открывает его заново – прогресс и рекорды при этом сохраняются.</p>
+      </div>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">4</span>
+        <h2>Знакомство со словом</h2>
+      </div>
+      <p class="step-intro">Перед каждым уровнем – карточка нового слова. Это и есть момент, когда английское слово входит в игру.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/04-learn.png" alt="Карточка слова: слово jump, значок звука, буквы для набора и полоска с героем.">
+          <span class="shot-empty-label">Скриншот карточки слова<br>(assets/screens/04-learn.png)</span>
+          <span class="pin" style="--x:50%; --y:20%">1</span>
+          <span class="pin" style="--x:72%; --y:20%">2</span>
+          <span class="pin" style="--x:50%; --y:42%">3</span>
+          <span class="pin" style="--x:50%; --y:66%">4</span>
+          <span class="pin" style="--x:20%; --y:31%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Само слово, крупно и по-английски.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Значок звука. Нажатие произносит слово вслух. Слово звучит и само, когда карточка открывается.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Полоска с героем. Как только слово набрано, герой сразу выполняет действие – ребёнок видит, что слово значит, а не читает перевод.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Буквы. На этом экране слово набирается нажатием на буквы, а не с клавиатуры: слово ещё совсем новое.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Кнопка перевода. Перевод доступен по нажатию, но не показывается сам – сначала ребёнок пробует понять слово через действие.</li>
+        </ol>
+      </figure>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">5</span>
+        <h2>Первое задание</h2>
+      </div>
+      <p class="step-intro">Здесь ребёнок уже сам набирает команды и составляет из них программу.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/05-challenge.png" alt="Экран задания: игровое поле, список набранных команд и кнопка «Go!».">
+          <span class="shot-empty-label">Скриншот первого задания<br>(assets/screens/05-challenge.png)</span>
+          <span class="pin" style="--x:30%; --y:32%">1</span>
+          <span class="pin" style="--x:74%; --y:32%">2</span>
+          <span class="pin" style="--x:50%; --y:62%">3</span>
+          <span class="pin" style="--x:50%; --y:74%">4</span>
+          <span class="pin" style="--x:50%; --y:88%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Игровое поле. Герой, препятствия и цель – всегда предмет, например подарок или мяч.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Программа – команды, набранные ребёнком, одна под другой. Когда программа запускается, выполняемая строка подсвечивается вместе с движением героя.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Поле ввода. Ребёнок печатает команду сам, с обычной клавиатуры.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Подсказки-слова со значком звука. Нажатие вставляет слово и произносит его. Это помощь по запросу: ребёнок сам решает, когда она нужна.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> «Go!» запускает программу. Кнопки «Назад» и «Пропустить» есть на каждом экране.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p><strong>Ошибиться здесь нельзя.</strong> Если команда неверная, герой просто не идёт дальше, и можно попробовать снова. В игре нет проигрыша, таймеров и штрафов.</p>
+      </div>
+    </section>
+
+    <section class="guide-close">
+      <h2>Что дальше</h2>
+      <p>Лучший способ понять игру – открыть её. Демо работает прямо в браузере, без регистрации.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Попробовать бесплатно</a>
+        <a class="cta cta--ghost" href="https://t.me/axo_manager">Получить доступ</a>
+      </div>
+      <p style="margin-top:14px; font-size:15px;">Кнопка «Получить доступ» откроет чат в Telegram с @axo_manager.</p>
+      <a class="back-link" href="index.html">← На главную</a>
+    </section>
+  </main>
+
+  <main class="guide-content" id="content-en" hidden>
+    <h1>How to play axo</h1>
+    <p class="guide-lede">The five screens your child meets at the start. Look through them once, and they can take it from there.</p>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">1</span>
+        <h2>The start screen</h2>
+      </div>
+      <p class="step-intro">The first thing that opens. Your child types their name and taps Play.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/01-home.png" alt="The axo start screen: the axolotl, a name field and a Play button.">
+          <span class="shot-empty-label">Start screen screenshot<br>(assets/screens/01-home.png)</span>
+          <span class="pin" style="--x:50%; --y:30%">1</span>
+          <span class="pin" style="--x:50%; --y:57%">2</span>
+          <span class="pin" style="--x:50%; --y:70%">3</span>
+          <span class="pin" style="--x:88%; --y:8%">4</span>
+          <span class="pin" style="--x:50%; --y:90%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> Axo the axolotl – the hero and mascot of the game.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The name field. A first name and nothing else – it lets the game greet your child and keep their results on this device.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The Play button. Everything starts here.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The globe – the language of the hints. Eleven languages are available. English always stays the language of the game itself.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> The version number and the Privacy · Terms links.</li>
+        </ol>
+      </figure>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">2</span>
+        <h2>Choosing a hero</h2>
+      </div>
+      <p class="step-intro">Your child picks the animal they will play as. Three are open at the start: bear, hamster and rabbit.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/02-animal.png" alt="The animal picker: bear, hamster and rabbit, with locked heroes below.">
+          <span class="shot-empty-label">Hero picker screenshot<br>(assets/screens/02-animal.png)</span>
+          <span class="pin" style="--x:26%; --y:38%">1</span>
+          <span class="pin" style="--x:50%; --y:62%">2</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> The heroes available now. The choice changes nothing in play – it is simply "my character".</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Locked heroes. Each one opens when your child finishes a particular level. This is the reward for finishing it.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p>The hero picker comes back every time your child starts the game over – for many children this is the favourite part.</p>
+      </div>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">3</span>
+        <h2>The world map</h2>
+      </div>
+      <p class="step-intro">The whole journey on one screen, with no scrolling. Four islands – four stages of the game.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/03-map.png" alt="The axo world map: four island zones with numbered level dots.">
+          <span class="shot-empty-label">World map screenshot<br>(assets/screens/03-map.png)</span>
+          <span class="pin" style="--x:27%; --y:30%">1</span>
+          <span class="pin" style="--x:73%; --y:30%">2</span>
+          <span class="pin" style="--x:27%; --y:44%">3</span>
+          <span class="pin" style="--x:50%; --y:88%">4</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> The Start island, where your child begins. The dots along the path are levels: finished ones carry a tick, the current one glows.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> A locked island. It opens when your child reaches it. The lock is a promise rather than a barrier – there is nothing to tap on it.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The island badge. Your child earns it by finishing the whole island, and keeps it for good.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The big Let's go button. It always continues from wherever your child stopped.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p>The map is one tap away at any time via the map icon. Tapping a level that is already finished opens it again, and both progress and best times are kept.</p>
+      </div>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">4</span>
+        <h2>Meeting a word</h2>
+      </div>
+      <p class="step-intro">Every level opens with a card for the new word. This is the moment the English word enters the game.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/04-learn.png" alt="A word card: the word jump, a sound icon, letter tiles and a strip with the hero.">
+          <span class="shot-empty-label">Word card screenshot<br>(assets/screens/04-learn.png)</span>
+          <span class="pin" style="--x:50%; --y:20%">1</span>
+          <span class="pin" style="--x:72%; --y:20%">2</span>
+          <span class="pin" style="--x:50%; --y:42%">3</span>
+          <span class="pin" style="--x:50%; --y:66%">4</span>
+          <span class="pin" style="--x:20%; --y:31%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> The word itself, large and in English.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The sound icon. Tapping it says the word aloud. The word is also spoken on its own when the card opens.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The strip with the hero. The moment the word is spelled out, the hero performs the action – your child sees what the word means instead of reading a translation.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The letters. On this screen the word is tapped out letter by letter rather than typed, because the word is still brand new.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> The translation button. A translation is one tap away but is never shown by default – your child first tries to catch the word through the action.</li>
+        </ol>
+      </figure>
+    </section>
+
+    <section class="step-block">
+      <div class="step-head">
+        <span class="step-num" aria-hidden="true">5</span>
+        <h2>The first challenge</h2>
+      </div>
+      <p class="step-intro">Here your child types the commands themselves and builds them into a program.</p>
+      <figure class="shot">
+        <div class="shot-frame">
+          <img src="assets/screens/05-challenge.png" alt="A challenge screen: the game grid, the list of typed commands and the Go button.">
+          <span class="shot-empty-label">First challenge screenshot<br>(assets/screens/05-challenge.png)</span>
+          <span class="pin" style="--x:30%; --y:32%">1</span>
+          <span class="pin" style="--x:74%; --y:32%">2</span>
+          <span class="pin" style="--x:50%; --y:62%">3</span>
+          <span class="pin" style="--x:50%; --y:74%">4</span>
+          <span class="pin" style="--x:50%; --y:88%">5</span>
+        </div>
+        <ol class="pin-legend">
+          <li><span class="pin-num" aria-hidden="true">1</span> The grid. The hero, the obstacles and the goal – always an object, such as a gift box or a ball.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The program: the commands your child typed, one under another. When it runs, the line being carried out lights up in step with the hero.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The input field. Your child types each command themselves, on the ordinary keyboard.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Word hints with a sound icon. Tapping one inserts the word and says it aloud. This is help on request: your child decides when they need it.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Go runs the program. Back and Skip are on every screen.</li>
+        </ol>
+      </figure>
+      <div class="note-card">
+        <p><strong>There is no way to lose here.</strong> If a command is wrong, the hero simply does not move on and your child can try again. The game has no game over, no timers and no penalties.</p>
+      </div>
+    </section>
+
+    <section class="guide-close">
+      <h2>What next</h2>
+      <p>The best way to understand the game is to open it. The demo runs straight in your browser, with no signup.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Try it free</a>
+        <a class="cta cta--ghost" href="https://t.me/axo_manager">Get access</a>
+      </div>
+      <p style="margin-top:14px; font-size:15px;">Get access opens a Telegram chat with @axo_manager.</p>
+      <a class="back-link" href="index.html">← Back to home</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Arina Bolotbekova · <a href="privacy.html" class="footer-privacy">Конфиденциальность</a> · <a href="terms.html" class="footer-terms">Условия</a></p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.title = lang === 'ru' ? 'axo – Как играть' : 'axo – How to play';
+
+      document.getElementById('content-ru').hidden = lang !== 'ru';
+      document.getElementById('content-en').hidden = lang !== 'en';
+
+      const privacyLink = document.querySelector('.footer-privacy');
+      const termsLink = document.querySelector('.footer-terms');
+      if (privacyLink) privacyLink.textContent = lang === 'ru' ? 'Конфиденциальность' : 'Privacy';
+      if (termsLink) termsLink.textContent = lang === 'ru' ? 'Условия' : 'Terms';
+
+      document.querySelector('.lang-toggle').dataset.active = lang;
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        const active = btn.dataset.langBtn === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+    });
+
+    // Same ?lang= contract as terms.html and privacy.html, so a link that
+    // carries the reader's language lands them on the right text directly.
+    const requested = new URLSearchParams(location.search).get('lang');
+    if (requested === 'ru' || requested === 'en') setLang(requested);
+
+    // A screenshot that is not on disk yet shows a labelled placeholder rather
+    // than a broken-image icon, and its pins are hidden - a pin floating over
+    // an empty box names nothing.
+    document.querySelectorAll('.shot-frame img').forEach(img => {
+      const markEmpty = () => img.closest('.shot-frame').classList.add('is-empty');
+      img.addEventListener('error', markEmpty);
+      if (img.complete && img.naturalWidth === 0) markEmpty();
+    });
+  </script>
+</body>
+</html>

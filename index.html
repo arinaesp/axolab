@@ -312,6 +312,50 @@
 
     .cta svg { width: 19px; height: 19px; flex-shrink: 0; }
 
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cta--ghost {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--brown);
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    .cta--ghost:hover, .cta--ghost:focus-visible {
+      background: var(--brown);
+      color: var(--cream);
+      box-shadow: 0 6px 18px rgba(105, 59, 55, 0.28);
+    }
+
+    .cta-note {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .hero-cta { margin-top: 26px; }
+
+    .guide-link-wrap { margin: 22px 0 8px; }
+
+    .guide-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .guide-link:hover, .guide-link:focus-visible { text-decoration: underline; }
+
     .trust {
       font-size: 14px;
       color: var(--muted);
@@ -567,6 +611,13 @@
       <p class="kicker" data-i18n="kicker">Мини-приложение в Telegram</p>
       <h1 data-i18n="heading">Английский через программирование</h1>
       <p class="hero-para" data-i18n="subtitle">Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.</p>
+      <div class="hero-cta">
+        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg>
+          <span data-i18n="heroCta">Попробовать бесплатно</span>
+        </a>
+        <p class="cta-note" data-i18n="heroCtaNote">Два урока, без регистрации – откроется в браузере</p>
+      </div>
       <ol class="card-grid card-grid--intro">
         <li class="value-card">
           <span class="value-num" aria-hidden="true">1</span>
@@ -613,10 +664,16 @@
           <p class="value-desc" data-i18n="fut3d">Вводный уровень programming mindset – привычка видеть в задаче последовательность действий.</p>
         </li>
       </ol>
-      <a class="cta" href="https://t.me/axo_manager">
-        <span data-i18n="cta">Начать играть</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
-      </a>
+      <div class="cta-row">
+        <a class="cta" href="https://t.me/axo_manager">
+          <span data-i18n="cta">Получить доступ</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        </a>
+        <a class="cta cta--ghost" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">
+          <span data-i18n="ctaDemo">Сначала попробовать демо</span>
+        </a>
+      </div>
+      <p class="cta-note" data-i18n="ctaNote">Кнопка откроет чат в Telegram с @axo_manager</p>
       <p class="trust" data-i18n="trust">Уроки пишет сертифицированный преподаватель</p>
     </section>
 
@@ -657,13 +714,14 @@
             <p data-i18n="s3d">Герой выполняет команду и продвигается по уровню - слово усваивается через действие, а не заучивание.</p>
           </li>
         </ol>
+        <p class="guide-link-wrap reveal"><a class="guide-link" href="help.html" data-i18n="guideLink">Посмотреть все экраны игры →</a></p>
         <p class="tpr-note reveal" data-i18n="tpr">В основе образовательного контента лежит авторская методика ILLA (Integrated Language-Logic Acquisition), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© 2026 Arina Bolotbekova · <a href="privacy.html" class="footer-privacy">Конфиденциальность</a> · <a href="terms.html" class="footer-terms">Условия</a></p>
+    <p>© 2026 Arina Bolotbekova · <a href="help.html" class="footer-help">Как играть</a> · <a href="privacy.html" class="footer-privacy">Конфиденциальность</a> · <a href="terms.html" class="footer-terms">Условия</a></p>
   </footer>
 
   <script>
@@ -673,6 +731,8 @@
         kicker: 'Мини-приложение в Telegram',
         heading: 'Английский через программирование',
         subtitle: 'Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.',
+        heroCta: 'Попробовать бесплатно',
+        heroCtaNote: 'Два урока, без регистрации – откроется в браузере',
         card1t: 'Один сквозной процесс',
         card1d: 'Слова и команды кода учатся вместе, а не по отдельности.',
         card2t: 'Нет аналогов',
@@ -689,7 +749,9 @@
         vennCoding: 'Кодинг',
         vennEnglish: 'Английский',
         chartAlt: 'Диаграмма Венна: на пересечении кругов «Кодинг» и «Английский» находится axo.',
-        cta: 'Начать играть',
+        cta: 'Получить доступ',
+        ctaDemo: 'Сначала попробовать демо',
+        ctaNote: 'Кнопка откроет чат в Telegram с @axo_manager',
         trust: 'Уроки пишет сертифицированный преподаватель',
         howTitle: 'Как проходит урок',
         s1t: 'Смотри',
@@ -699,6 +761,7 @@
         pill: 'jump – «прыгай»',
         s3t: 'Действуй',
         s3d: 'Герой выполняет команду и продвигается по уровню - слово усваивается через действие, а не заучивание.',
+        guideLink: 'Посмотреть все экраны игры →',
         tpr: 'В основе образовательного контента лежит авторская методика ILLA (Integrated Language-Logic Acquisition), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).',
         mascotAlt: 'Аксолотль Axo, герой приложения axo'
       },
@@ -707,6 +770,8 @@
         kicker: 'Telegram Mini App',
         heading: 'English through coding',
         subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
+        heroCta: 'Try it free',
+        heroCtaNote: 'Two lessons, no signup – opens in your browser',
         card1t: 'One continuous process',
         card1d: 'Words and code commands are learned together, not separately.',
         card2t: 'No analogues',
@@ -723,7 +788,9 @@
         vennCoding: 'Coding',
         vennEnglish: 'English',
         chartAlt: 'Venn diagram: axo sits at the overlap of the Coding and English circles.',
-        cta: 'Join the game',
+        cta: 'Get access',
+        ctaDemo: 'Try the demo first',
+        ctaNote: 'This opens a Telegram chat with @axo_manager',
         trust: 'Lessons by a certified instructor',
         howTitle: 'How a lesson works',
         s1t: 'Watch',
@@ -733,6 +800,7 @@
         pill: 'jump – "jump"',
         s3t: 'Act',
         s3d: 'The hero performs the command and moves through the level – the word sinks in through action, not memorisation.',
+        guideLink: 'See every screen of the game →',
         tpr: 'The educational content is based on ILLA (Integrated Language-Logic Acquisition), an original methodology developed by Arina Bolotbekova. It combines Total Physical Response (TPR, James Asher), Task-Based Language Learning (TBLL) and Digital Game-Based Language Learning (DGBLL).',
         mascotAlt: 'Axo the axolotl, hero of the axo app'
       }
@@ -748,8 +816,16 @@
       document.querySelectorAll('[data-i18n-alt]').forEach(el => {
         el.alt = dict[el.dataset.i18nAlt];
       });
+      const helpLink = document.querySelector('.footer-help');
       const privacyLink = document.querySelector('.footer-privacy');
       const termsLink = document.querySelector('.footer-terms');
+      if (helpLink) helpLink.textContent = lang === 'ru' ? 'Как играть' : 'How to play';
+
+      // Carry the reader's language into the guide page, so an English reader
+      // is not dropped onto the Russian text with a toggle to find.
+      document.querySelectorAll('.footer-help, .guide-link').forEach(a => {
+        a.href = 'help.html?lang=' + lang;
+      });
       if (privacyLink) privacyLink.textContent = lang === 'ru' ? 'Конфиденциальность' : 'Privacy';
       if (termsLink) termsLink.textContent = lang === 'ru' ? 'Условия' : 'Terms';
       document.querySelector('.lang-toggle').dataset.active = lang;
