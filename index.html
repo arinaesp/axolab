@@ -626,7 +626,7 @@
             <span data-i18n="cta">Получить доступ</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
           </a>
-          <a class="cta cta--ghost" href="https://t.me/axo_lab">
+          <a class="cta cta--ghost channel-link" href="https://t.me/axo_lab">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <span data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</span>
           </a>
@@ -684,7 +684,7 @@
           <span data-i18n="cta">Получить доступ</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
         </a>
-        <a class="cta cta--ghost" href="https://t.me/axo_lab">
+        <a class="cta cta--ghost channel-link" href="https://t.me/axo_lab">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <span data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</span>
         </a>
@@ -791,7 +791,7 @@
         kicker: 'Telegram Mini App',
         heading: 'English through coding',
         subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
-        ctaGroup: 'Join AXO Lab',
+        ctaGroup: 'Join AXO Global',
         heroCtaNote: 'Access comes by code from @axo_manager. The channel has links to the free demo, the instructions and answers to questions.',
         card1t: 'One continuous process',
         card1d: 'Words and code commands are learned together, not separately.',
@@ -810,7 +810,7 @@
         vennEnglish: 'English',
         chartAlt: 'Venn diagram: axo sits at the overlap of the Coding and English circles.',
         cta: 'Get access',
-        ctaNote: 'Get access opens a chat with @axo_manager; Join AXO Lab opens our channel on Telegram.',
+        ctaNote: 'Get access opens a chat with @axo_manager; Join AXO Global opens our English channel on Telegram.',
         trust: 'Lessons by a certified instructor',
         howTitle: 'How a lesson works',
         s1t: 'Watch',
@@ -843,6 +843,14 @@
 
       // Carry the reader's language into the guide page, so an English reader
       // is not dropped onto the Russian text with a toggle to find.
+      // The community splits by language: Russian readers go to AXO Lab,
+      // everyone else to AXO GLOBAL. Without this an English-speaking parent
+      // lands in a Russian-language channel, which is the exact thing the
+      // global channel was created to avoid.
+      document.querySelectorAll('.channel-link').forEach(a => {
+        a.href = lang === 'ru' ? 'https://t.me/axo_lab' : 'https://t.me/axoglobal';
+      });
+
       document.querySelectorAll('.footer-help, .guide-link').forEach(a => {
         a.href = 'help.html?lang=' + lang;
       });
