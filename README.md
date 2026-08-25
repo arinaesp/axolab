@@ -60,7 +60,7 @@ axo's approach to teaching English through coding commands was designed by Arina
 
 ## Official channels
 
-The only official axo channels are the Telegram Mini App, the **AXO Lab** channel [t.me/axo_lab](https://t.me/axo_lab), its linked discussion group [t.me/axo_game](https://t.me/axo_game) where post comments appear, and [@axo_manager](https://t.me/axo_manager). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not initiate private messages asking for payment, and never asks for passwords, Telegram login codes, SMS codes, or card CVV codes. See [Terms of Use §7](https://arinaesp.github.io/axo-landing/terms.html) for details.
+The only official axo channels are the Telegram Mini App, the **AXO Lab** channel [t.me/axo_lab](https://t.me/axo_lab), and [@axo_manager](https://t.me/axo_manager). Comments on channel posts open in a linked discussion group, reachable only through the Comment button under a post. Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not initiate private messages asking for payment, and never asks for passwords, Telegram login codes, SMS codes, or card CVV codes. See [Terms of Use §7](https://arinaesp.github.io/axo-landing/terms.html) for details.
 
 ## Author and rights
 
