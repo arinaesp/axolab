@@ -398,15 +398,21 @@
   </header>
 
   <!--
-    Screenshots go in assets/screens/ with these exact names:
-      01-home.png  02-animal.png  03-map.png  04-learn.png  05-challenge.png
-    Until a file exists, its frame shows a dashed placeholder instead of a broken image.
+    Screenshots live in media/screenshots/ (v0.99.3 captures, 562-574px wide).
+    They are referenced from where they sit rather than copied into assets/, so
+    there is only one copy to keep current. They are committed explicitly, the
+    way every published file in this repo is - GitHub Pages serves nothing it
+    has not been given.
 
     Pin positions are the two custom properties on each .pin: --x is distance
-    from the left edge, --y from the top, both as a percentage of the image.
-    They scale with the image, so they stay put on every screen size. The values
-    below are estimates - once the real screenshots are in place, nudge each
-    percentage until the pin sits on the element it names.
+    from the left edge, --y from the top, both as a percentage of the image, so
+    they hold their place at every screen size. The values below were measured
+    against these exact captures. RE-SHOOTING A SCREEN MEANS RE-CHECKING ITS
+    PINS - a redesigned screen moves the thing each pin points at, and a pin
+    that drifts onto the wrong element is worse than no pin at all.
+
+    A frame whose image fails to load falls back to a labelled placeholder and
+    hides its pins.
   -->
 
   <main class="guide-content" id="content-ru">
@@ -421,19 +427,19 @@
       <p class="step-intro">Первое, что открывается. Ребёнок пишет своё имя и нажимает «Играть».</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/01-home.png" alt="Начальный экран axo: аксолотль, поле для имени и кнопка «Играть».">
-          <span class="shot-empty-label">Скриншот начального экрана<br>(assets/screens/01-home.png)</span>
-          <span class="pin" style="--x:50%; --y:30%">1</span>
-          <span class="pin" style="--x:50%; --y:57%">2</span>
-          <span class="pin" style="--x:50%; --y:70%">3</span>
-          <span class="pin" style="--x:88%; --y:8%">4</span>
-          <span class="pin" style="--x:50%; --y:90%">5</span>
+          <img src="media/screenshots/01-home.jpeg" alt="Начальный экран axo: аксолотль, поле для имени и кнопка «Играть».">
+          <span class="shot-empty-label">Скриншот начального экрана<br>(media/screenshots/01-home.jpeg)</span>
+          <span class="pin" style="--x:50%; --y:32%">1</span>
+          <span class="pin" style="--x:50%; --y:48%">2</span>
+          <span class="pin" style="--x:50%; --y:61%">3</span>
+          <span class="pin" style="--x:89%; --y:4.5%">4</span>
+          <span class="pin" style="--x:50%; --y:76%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Аксолотль axo – герой и талисман игры.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Аксолотль axo – талисман игры. Играет ребёнок не за него: своего героя он выбирает на следующем экране.</li>
           <li><span class="pin-num" aria-hidden="true">2</span> Поле для имени. Только имя, ничего больше – оно нужно, чтобы игра здоровалась с ребёнком и хранила его результаты на этом устройстве.</li>
           <li><span class="pin-num" aria-hidden="true">3</span> Кнопка «Играть». С неё начинается всё.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> Глобус – выбор языка подсказок. Доступны 11 языков. Английский при этом всегда остаётся языком самой игры.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Два переключателя звука: 🗣 голос, который произносит слова, и 🎵 фоновая музыка. Каждый выключается отдельно и остаётся выключенным.</li>
           <li><span class="pin-num" aria-hidden="true">5</span> Номер версии и ссылки «Конфиденциальность · Условия».</li>
         </ol>
       </figure>
@@ -447,14 +453,16 @@
       <p class="step-intro">Ребёнок выбирает животное, которым будет играть. В начале открыты трое: медведь, хомяк и кролик.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/02-animal.png" alt="Экран выбора животного: медведь, хомяк и кролик, ниже закрытые герои.">
-          <span class="shot-empty-label">Скриншот выбора героя<br>(assets/screens/02-animal.png)</span>
-          <span class="pin" style="--x:26%; --y:38%">1</span>
-          <span class="pin" style="--x:50%; --y:62%">2</span>
+          <img src="media/screenshots/02-animal.jpeg" alt="Экран выбора героя: медведь, хомяк и кролик открыты, остальные под замком.">
+          <span class="shot-empty-label">Скриншот выбора героя<br>(media/screenshots/02-animal.jpeg)</span>
+          <span class="pin" style="--x:49%; --y:8%">1</span>
+          <span class="pin" style="--x:32%; --y:23%">2</span>
+          <span class="pin" style="--x:66%; --y:42%">3</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Доступные герои. Выбор ни на что не влияет в игре – это просто «мой персонаж».</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> Закрытые герои. Каждый открывается, когда ребёнок проходит определённый уровень. Это и есть награда за пройденный уровень.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Заголовок по-английски: «Pick your friend!». Интерфейс игры английский с первого экрана – на родной язык переводятся только подсказки.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Три открытых героя: медведь, хомяк и кролик. Выбор ни на что не влияет в игре – это просто «мой персонаж».</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Закрытые герои под замком. Каждый открывается, когда ребёнок проходит определённый уровень. Это и есть награда за пройденный уровень.</li>
         </ol>
       </figure>
       <div class="note-card">
@@ -470,22 +478,25 @@
       <p class="step-intro">Весь путь на одном экране, без прокрутки. Четыре острова – четыре этапа игры.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/03-map.png" alt="Карта мира axo: четыре острова-зоны с пронумерованными точками уровней.">
-          <span class="shot-empty-label">Скриншот карты мира<br>(assets/screens/03-map.png)</span>
-          <span class="pin" style="--x:27%; --y:30%">1</span>
-          <span class="pin" style="--x:73%; --y:30%">2</span>
-          <span class="pin" style="--x:27%; --y:44%">3</span>
-          <span class="pin" style="--x:50%; --y:88%">4</span>
+          <img src="media/screenshots/03-map.jpeg" alt="Карта мира axo: четыре острова-зоны с пронумерованными точками уровней.">
+          <span class="shot-empty-label">Скриншот карты мира<br>(media/screenshots/03-map.jpeg)</span>
+          <span class="pin" style="--x:44%; --y:17%">1</span>
+          <span class="pin" style="--x:12%; --y:34%">2</span>
+          <span class="pin" style="--x:38%; --y:27%">3</span>
+          <span class="pin" style="--x:71%; --y:44%">4</span>
+          <span class="pin" style="--x:71%; --y:80%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Остров «Start» – здесь ребёнок начинает. Точки на дорожке это уровни: пройденные отмечены галочкой, текущий светится.</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> Закрытый остров под замком. Откроется, когда ребёнок дойдёт до него. Замок здесь как обещание, а не как преграда: нажимать на него не нужно.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> Значок острова. Ребёнок получает его, когда проходит остров целиком, и оставляет себе навсегда.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> Большая кнопка «Вперёд». Всегда продолжает с того места, где ребёнок остановился.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Игра здоровается с ребёнком по имени, рядом – выбранный герой.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Светящаяся точка – текущий уровень. Пройденные отмечаются галочкой, остальные просто пронумерованы. На каждом острове десять уровней.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Значок острова, здесь «Spark». Ребёнок получает его, когда проходит остров целиком, и оставляет себе навсегда.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Замок на закрытом острове. Откроется, когда ребёнок дойдёт до него. Замок здесь как обещание, а не как преграда: нажимать на него не нужно.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Четыре острова – весь путь целиком: Start, Flow, Prime и GOAT, сорок уровней.</li>
         </ol>
       </figure>
       <div class="note-card">
-        <p>На карту можно вернуться в любой момент по значку карты. Нажатие на уже пройденный уровень открывает его заново – прогресс и рекорды при этом сохраняются.</p>
+        <p>Ниже карты – большая кнопка «Let's go!». Она всегда продолжает с того места, где ребёнок остановился.</p>
+        <p>На карту можно вернуться в любой момент по значку карты в углу экрана. Нажатие на уже пройденный уровень открывает его заново – прогресс и рекорды при этом сохраняются.</p>
       </div>
     </section>
 
@@ -497,22 +508,25 @@
       <p class="step-intro">Перед каждым уровнем – карточка нового слова. Это и есть момент, когда английское слово входит в игру.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/04-learn.png" alt="Карточка слова: слово jump, значок звука, буквы для набора и полоска с героем.">
-          <span class="shot-empty-label">Скриншот карточки слова<br>(assets/screens/04-learn.png)</span>
-          <span class="pin" style="--x:50%; --y:20%">1</span>
-          <span class="pin" style="--x:72%; --y:20%">2</span>
-          <span class="pin" style="--x:50%; --y:42%">3</span>
-          <span class="pin" style="--x:50%; --y:66%">4</span>
-          <span class="pin" style="--x:20%; --y:31%">5</span>
+          <img src="media/screenshots/04-learn.jpeg" alt="Карточка слова go: значок звука, кнопка языка, буквы для набора и полоска с героем.">
+          <span class="shot-empty-label">Скриншот карточки слова<br>(media/screenshots/04-learn.jpeg)</span>
+          <span class="pin" style="--x:48%; --y:23%">1</span>
+          <span class="pin" style="--x:31%; --y:28%">2</span>
+          <span class="pin" style="--x:68%; --y:28%">3</span>
+          <span class="pin" style="--x:50%; --y:54%">4</span>
+          <span class="pin" style="--x:40%; --y:68%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Само слово, крупно и по-английски.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Само слово, крупно и по-английски. Здесь это <strong>go</strong> – «иди».</li>
           <li><span class="pin-num" aria-hidden="true">2</span> Значок звука. Нажатие произносит слово вслух. Слово звучит и само, когда карточка открывается.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> Полоска с героем. Как только слово набрано, герой сразу выполняет действие – ребёнок видит, что слово значит, а не читает перевод.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> Буквы. На этом экране слово набирается нажатием на буквы, а не с клавиатуры: слово ещё совсем новое.</li>
-          <li><span class="pin-num" aria-hidden="true">5</span> Кнопка перевода. Перевод доступен по нажатию, но не показывается сам – сначала ребёнок пробует понять слово через действие.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Кнопка «🌍 EN» – язык подсказок, 11 языков на выбор. Здесь же открывается перевод слова: он доступен по нажатию, но не показывается сам, чтобы ребёнок сначала попробовал понять слово через действие.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Буквы и пустые клетки над ними. На этом экране слово набирается нажатием на буквы, а не с клавиатуры: слово ещё совсем новое.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Полоска с героем. Как только слово собрано, герой сразу выполняет действие – ребёнок видит, что слово значит. Кнопка справа повторяет показ.</li>
         </ol>
       </figure>
+      <div class="note-card">
+        <p>Точки наверху показывают, сколько шагов в уровне и на каком ребёнок сейчас. Значок карты в левом углу возвращает к карте мира, «Skip» пропускает шаг.</p>
+      </div>
     </section>
 
     <section class="step-block">
@@ -523,20 +537,22 @@
       <p class="step-intro">Здесь ребёнок уже сам набирает команды и составляет из них программу.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/05-challenge.png" alt="Экран задания: игровое поле, список набранных команд и кнопка «Go!».">
-          <span class="shot-empty-label">Скриншот первого задания<br>(assets/screens/05-challenge.png)</span>
-          <span class="pin" style="--x:30%; --y:32%">1</span>
-          <span class="pin" style="--x:74%; --y:32%">2</span>
-          <span class="pin" style="--x:50%; --y:62%">3</span>
-          <span class="pin" style="--x:50%; --y:74%">4</span>
-          <span class="pin" style="--x:50%; --y:88%">5</span>
+          <img src="media/screenshots/05-challenge.jpeg" alt="Экран задания: игровое поле с подарком, список набранных команд и кнопка «Go!».">
+          <span class="shot-empty-label">Скриншот первого задания<br>(media/screenshots/05-challenge.jpeg)</span>
+          <span class="pin" style="--x:30%; --y:40%">1</span>
+          <span class="pin" style="--x:48%; --y:21%">2</span>
+          <span class="pin" style="--x:78%; --y:33%">3</span>
+          <span class="pin" style="--x:40%; --y:59%">4</span>
+          <span class="pin" style="--x:43%; --y:70%">5</span>
+          <span class="pin" style="--x:61%; --y:82%">6</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Игровое поле. Герой, препятствия и цель – всегда предмет, например подарок или мяч.</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> Программа – команды, набранные ребёнком, одна под другой. Когда программа запускается, выполняемая строка подсвечивается вместе с движением героя.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> Поле ввода. Ребёнок печатает команду сам, с обычной клавиатуры.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> Подсказки-слова со значком звука. Нажатие вставляет слово и произносит его. Это помощь по запросу: ребёнок сам решает, когда она нужна.</li>
-          <li><span class="pin-num" aria-hidden="true">5</span> «Go!» запускает программу. Кнопки «Назад» и «Пропустить» есть на каждом экране.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Игровое поле. Оранжевая стрелка у героя показывает, куда он смотрит – это и решает, куда его поведёт команда <strong>go</strong>.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> Цель. Это всегда предмет – подарок, мяч, сундук. К нему и нужно привести героя.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Программа – команды, набранные ребёнком, одна под другой и пронумерованные. Когда программа запускается, выполняемая строка подсвечивается вместе с движением героя.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Поле ввода. Ребёнок печатает команду сам, с обычной клавиатуры, и добавляет её в программу зелёной кнопкой.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Подсказки-слова со значком звука. Нажатие вставляет слово и произносит его. Это помощь по запросу: ребёнок сам решает, когда она нужна.</li>
+          <li><span class="pin-num" aria-hidden="true">6</span> «Go!» запускает программу. Рядом – корзина, чтобы стереть набранное, а по краям «Back» и «Skip».</li>
         </ol>
       </figure>
       <div class="note-card">
@@ -568,19 +584,19 @@
       <p class="step-intro">The first thing that opens. Your child types their name and taps Play.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/01-home.png" alt="The axo start screen: the axolotl, a name field and a Play button.">
-          <span class="shot-empty-label">Start screen screenshot<br>(assets/screens/01-home.png)</span>
-          <span class="pin" style="--x:50%; --y:30%">1</span>
-          <span class="pin" style="--x:50%; --y:57%">2</span>
-          <span class="pin" style="--x:50%; --y:70%">3</span>
-          <span class="pin" style="--x:88%; --y:8%">4</span>
-          <span class="pin" style="--x:50%; --y:90%">5</span>
+          <img src="media/screenshots/01-home.jpeg" alt="The axo start screen: the axolotl, a name field and a Play button.">
+          <span class="shot-empty-label">Start screen screenshot<br>(media/screenshots/01-home.jpeg)</span>
+          <span class="pin" style="--x:50%; --y:32%">1</span>
+          <span class="pin" style="--x:50%; --y:48%">2</span>
+          <span class="pin" style="--x:50%; --y:61%">3</span>
+          <span class="pin" style="--x:89%; --y:4.5%">4</span>
+          <span class="pin" style="--x:50%; --y:76%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Axo the axolotl – the hero and mascot of the game.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Axo the axolotl – the mascot of the game. Your child does not play as Axo: they pick their own hero on the next screen.</li>
           <li><span class="pin-num" aria-hidden="true">2</span> The name field. A first name and nothing else – it lets the game greet your child and keep their results on this device.</li>
           <li><span class="pin-num" aria-hidden="true">3</span> The Play button. Everything starts here.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> The globe – the language of the hints. Eleven languages are available. English always stays the language of the game itself.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> Two sound switches: 🗣 the voice that speaks the words, and 🎵 the background music. Each turns off separately and stays off.</li>
           <li><span class="pin-num" aria-hidden="true">5</span> The version number and the Privacy · Terms links.</li>
         </ol>
       </figure>
@@ -594,14 +610,16 @@
       <p class="step-intro">Your child picks the animal they will play as. Three are open at the start: bear, hamster and rabbit.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/02-animal.png" alt="The animal picker: bear, hamster and rabbit, with locked heroes below.">
-          <span class="shot-empty-label">Hero picker screenshot<br>(assets/screens/02-animal.png)</span>
-          <span class="pin" style="--x:26%; --y:38%">1</span>
-          <span class="pin" style="--x:50%; --y:62%">2</span>
+          <img src="media/screenshots/02-animal.jpeg" alt="The hero picker: bear, hamster and rabbit open, the rest behind padlocks.">
+          <span class="shot-empty-label">Hero picker screenshot<br>(media/screenshots/02-animal.jpeg)</span>
+          <span class="pin" style="--x:49%; --y:8%">1</span>
+          <span class="pin" style="--x:32%; --y:23%">2</span>
+          <span class="pin" style="--x:66%; --y:42%">3</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> The heroes available now. The choice changes nothing in play – it is simply "my character".</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> Locked heroes. Each one opens when your child finishes a particular level. This is the reward for finishing it.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> The heading is in English: "Pick your friend!". The game's interface is English from the very first screen – only the hints are translated.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The three heroes open at the start: bear, hamster and rabbit. The choice changes nothing in play – it is simply "my character".</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> Locked heroes behind padlocks. Each one opens when your child finishes a particular level. This is the reward for finishing it.</li>
         </ol>
       </figure>
       <div class="note-card">
@@ -617,22 +635,25 @@
       <p class="step-intro">The whole journey on one screen, with no scrolling. Four islands – four stages of the game.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/03-map.png" alt="The axo world map: four island zones with numbered level dots.">
-          <span class="shot-empty-label">World map screenshot<br>(assets/screens/03-map.png)</span>
-          <span class="pin" style="--x:27%; --y:30%">1</span>
-          <span class="pin" style="--x:73%; --y:30%">2</span>
-          <span class="pin" style="--x:27%; --y:44%">3</span>
-          <span class="pin" style="--x:50%; --y:88%">4</span>
+          <img src="media/screenshots/03-map.jpeg" alt="The axo world map: four island zones with numbered level dots.">
+          <span class="shot-empty-label">World map screenshot<br>(media/screenshots/03-map.jpeg)</span>
+          <span class="pin" style="--x:44%; --y:17%">1</span>
+          <span class="pin" style="--x:12%; --y:34%">2</span>
+          <span class="pin" style="--x:38%; --y:27%">3</span>
+          <span class="pin" style="--x:71%; --y:44%">4</span>
+          <span class="pin" style="--x:71%; --y:80%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> The Start island, where your child begins. The dots along the path are levels: finished ones carry a tick, the current one glows.</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> A locked island. It opens when your child reaches it. The lock is a promise rather than a barrier – there is nothing to tap on it.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> The island badge. Your child earns it by finishing the whole island, and keeps it for good.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> The big Let's go button. It always continues from wherever your child stopped.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> The game greets your child by name, with their chosen hero beside it.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The glowing dot is the current level. Finished ones carry a tick, the rest are simply numbered. Each island holds ten levels.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The island badge, here "Spark". Your child earns it by finishing the whole island, and keeps it for good.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The padlock on a closed island. It opens when your child reaches it. The lock is a promise rather than a barrier – there is nothing to tap on it.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Four islands – the whole journey: Start, Flow, Prime and GOAT, forty levels.</li>
         </ol>
       </figure>
       <div class="note-card">
-        <p>The map is one tap away at any time via the map icon. Tapping a level that is already finished opens it again, and both progress and best times are kept.</p>
+        <p>Below the map is the big Let's go button. It always continues from wherever your child stopped.</p>
+        <p>The map is one tap away at any time via the map icon in the corner. Tapping a level that is already finished opens it again, and both progress and best times are kept.</p>
       </div>
     </section>
 
@@ -644,22 +665,25 @@
       <p class="step-intro">Every level opens with a card for the new word. This is the moment the English word enters the game.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/04-learn.png" alt="A word card: the word jump, a sound icon, letter tiles and a strip with the hero.">
-          <span class="shot-empty-label">Word card screenshot<br>(assets/screens/04-learn.png)</span>
-          <span class="pin" style="--x:50%; --y:20%">1</span>
-          <span class="pin" style="--x:72%; --y:20%">2</span>
-          <span class="pin" style="--x:50%; --y:42%">3</span>
-          <span class="pin" style="--x:50%; --y:66%">4</span>
-          <span class="pin" style="--x:20%; --y:31%">5</span>
+          <img src="media/screenshots/04-learn.jpeg" alt="The word card for go: a sound icon, the language button, letter tiles and a strip with the hero.">
+          <span class="shot-empty-label">Word card screenshot<br>(media/screenshots/04-learn.jpeg)</span>
+          <span class="pin" style="--x:48%; --y:23%">1</span>
+          <span class="pin" style="--x:31%; --y:28%">2</span>
+          <span class="pin" style="--x:68%; --y:28%">3</span>
+          <span class="pin" style="--x:50%; --y:54%">4</span>
+          <span class="pin" style="--x:40%; --y:68%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> The word itself, large and in English.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> The word itself, large and in English. Here it is <strong>go</strong>.</li>
           <li><span class="pin-num" aria-hidden="true">2</span> The sound icon. Tapping it says the word aloud. The word is also spoken on its own when the card opens.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> The strip with the hero. The moment the word is spelled out, the hero performs the action – your child sees what the word means instead of reading a translation.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> The letters. On this screen the word is tapped out letter by letter rather than typed, because the word is still brand new.</li>
-          <li><span class="pin-num" aria-hidden="true">5</span> The translation button. A translation is one tap away but is never shown by default – your child first tries to catch the word through the action.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The "🌍 EN" button – the language of the hints, eleven to choose from. The translation of the word lives here too: one tap away, but never shown by default, so your child first tries to catch the word through the action.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The letters, and the empty slots above them. On this screen the word is tapped out letter by letter rather than typed, because the word is still brand new.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> The strip with the hero. The moment the word is complete, the hero performs the action – your child sees what the word means. The button to the right replays it.</li>
         </ol>
       </figure>
+      <div class="note-card">
+        <p>The dots along the top show how many steps the level has and which one your child is on. The map icon in the left corner returns to the world map, and Skip moves past a step.</p>
+      </div>
     </section>
 
     <section class="step-block">
@@ -670,20 +694,22 @@
       <p class="step-intro">Here your child types the commands themselves and builds them into a program.</p>
       <figure class="shot">
         <div class="shot-frame">
-          <img src="assets/screens/05-challenge.png" alt="A challenge screen: the game grid, the list of typed commands and the Go button.">
-          <span class="shot-empty-label">First challenge screenshot<br>(assets/screens/05-challenge.png)</span>
-          <span class="pin" style="--x:30%; --y:32%">1</span>
-          <span class="pin" style="--x:74%; --y:32%">2</span>
-          <span class="pin" style="--x:50%; --y:62%">3</span>
-          <span class="pin" style="--x:50%; --y:74%">4</span>
-          <span class="pin" style="--x:50%; --y:88%">5</span>
+          <img src="media/screenshots/05-challenge.jpeg" alt="A challenge screen: the grid with a gift box, the list of typed commands and the Go button.">
+          <span class="shot-empty-label">First challenge screenshot<br>(media/screenshots/05-challenge.jpeg)</span>
+          <span class="pin" style="--x:30%; --y:40%">1</span>
+          <span class="pin" style="--x:48%; --y:21%">2</span>
+          <span class="pin" style="--x:78%; --y:33%">3</span>
+          <span class="pin" style="--x:40%; --y:59%">4</span>
+          <span class="pin" style="--x:43%; --y:70%">5</span>
+          <span class="pin" style="--x:61%; --y:82%">6</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> The grid. The hero, the obstacles and the goal – always an object, such as a gift box or a ball.</li>
-          <li><span class="pin-num" aria-hidden="true">2</span> The program: the commands your child typed, one under another. When it runs, the line being carried out lights up in step with the hero.</li>
-          <li><span class="pin-num" aria-hidden="true">3</span> The input field. Your child types each command themselves, on the ordinary keyboard.</li>
-          <li><span class="pin-num" aria-hidden="true">4</span> Word hints with a sound icon. Tapping one inserts the word and says it aloud. This is help on request: your child decides when they need it.</li>
-          <li><span class="pin-num" aria-hidden="true">5</span> Go runs the program. Back and Skip are on every screen.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> The grid. The orange arrow by the hero shows which way they are facing – and that is what decides where the command <strong>go</strong> takes them.</li>
+          <li><span class="pin-num" aria-hidden="true">2</span> The goal. It is always an object – a gift box, a ball, a chest. That is where the hero has to end up.</li>
+          <li><span class="pin-num" aria-hidden="true">3</span> The program: the commands your child typed, numbered one under another. When it runs, the line being carried out lights up in step with the hero.</li>
+          <li><span class="pin-num" aria-hidden="true">4</span> The input field. Your child types each command themselves on the ordinary keyboard, then adds it to the program with the green button.</li>
+          <li><span class="pin-num" aria-hidden="true">5</span> Word hints with a sound icon. Tapping one inserts the word and says it aloud. This is help on request: your child decides when they need it.</li>
+          <li><span class="pin-num" aria-hidden="true">6</span> Go runs the program. Next to it is the bin for clearing the lines, with Back and Skip at either end.</li>
         </ol>
       </figure>
       <div class="note-card">
