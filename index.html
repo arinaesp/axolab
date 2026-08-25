@@ -22,6 +22,13 @@
       --brown: #693B37;
       --cream: #F5F2EB;
       --orange: #E07A3E;
+      /* Button fill. The ear orange #E07A3E carries only 2.99:1 against white
+         and 2.67:1 against cream, so a label on it fails WCAG AA either way.
+         This is the same hue family deepened until white text clears 4.5:1
+         (it measures 4.64:1), so the buttons read orange and the words stay
+         readable. --orange itself stays exactly as it was for links, pins,
+         focus rings and glows, where nothing sits on top of it. */
+      --orange-cta: #B85A20;
       --sage-200: #CCDBB2;
       --accent-100: #F9E7D8;
       --accent-200: #F3D2B8;
@@ -289,23 +296,23 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--brown);
-      color: var(--cream);
+      background: var(--orange-cta);
+      color: #fff;
       font-weight: 700;
       font-size: 17px;
       text-decoration: none;
       padding: 16px 30px;
       min-height: 44px;
       border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(105, 59, 55, 0.25);
+      box-shadow: 0 4px 14px rgba(184, 90, 32, 0.3);
       transition: background 0.25s ease, transform 0.25s var(--spring), box-shadow 0.25s ease;
       animation: popIn 0.55s var(--spring) 0.66s both;
     }
 
     .cta:hover, .cta:focus-visible {
-      background: var(--orange);
+      background: var(--accent-700);
       transform: translateY(-1px);
-      box-shadow: 0 8px 22px rgba(224, 122, 62, 0.4);
+      box-shadow: 0 8px 22px rgba(224, 122, 62, 0.45);
     }
 
     .cta:active { transform: translateY(1px) scale(0.98); }
@@ -322,17 +329,19 @@
 
     .cta--ghost {
       background: transparent;
-      color: var(--brown);
-      border: 2px solid var(--brown);
+      color: var(--accent-700);
+      border: 2px solid var(--orange-cta);
       box-shadow: none;
       font-weight: 600;
     }
 
     .cta--ghost:hover, .cta--ghost:focus-visible {
-      background: var(--brown);
-      color: var(--cream);
-      box-shadow: 0 6px 18px rgba(105, 59, 55, 0.28);
+      background: var(--orange-cta);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(184, 90, 32, 0.3);
     }
+
+    .lesson-cta { margin-top: 28px; }
 
     .cta-note {
       font-size: 14px;
@@ -612,11 +621,17 @@
       <h1 data-i18n="heading">Английский через программирование</h1>
       <p class="hero-para" data-i18n="subtitle">Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.</p>
       <div class="hero-cta">
-        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg>
-          <span data-i18n="heroCta">Попробовать бесплатно</span>
-        </a>
-        <p class="cta-note" data-i18n="heroCtaNote">Два урока, без регистрации – откроется в браузере</p>
+        <div class="cta-row">
+          <a class="cta" href="https://t.me/axo_manager">
+            <span data-i18n="cta">Получить доступ</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+          </a>
+          <a class="cta cta--ghost" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z"/></svg>
+            <span data-i18n="heroCta">Попробовать бесплатно</span>
+          </a>
+        </div>
+        <p class="cta-note" data-i18n="heroCtaNote">Доступ – по коду от @axo_manager. Демо – два урока в браузере.</p>
       </div>
       <ol class="card-grid card-grid--intro">
         <li class="value-card">
@@ -716,6 +731,12 @@
         </ol>
         <p class="guide-link-wrap reveal"><a class="guide-link" href="help.html" data-i18n="guideLink">Посмотреть все экраны игры →</a></p>
         <p class="tpr-note reveal" data-i18n="tpr">В основе образовательного контента лежит авторская методика ILLA (Integrated Language-Logic Acquisition), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).</p>
+        <div class="cta-row lesson-cta reveal">
+          <a class="cta" href="https://t.me/axo_manager">
+            <span data-i18n="cta">Получить доступ</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -732,7 +753,7 @@
         heading: 'Английский через программирование',
         subtitle: 'Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.',
         heroCta: 'Попробовать бесплатно',
-        heroCtaNote: 'Два урока, без регистрации – откроется в браузере',
+        heroCtaNote: 'Доступ – по коду от @axo_manager. Демо – два урока в браузере.',
         card1t: 'Один сквозной процесс',
         card1d: 'Слова и команды кода учатся вместе, а не по отдельности.',
         card2t: 'Нет аналогов',
@@ -771,7 +792,7 @@
         heading: 'English through coding',
         subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
         heroCta: 'Try it free',
-        heroCtaNote: 'Two lessons, no signup – opens in your browser',
+        heroCtaNote: 'Access comes by code from @axo_manager. The demo is two lessons in your browser.',
         card1t: 'One continuous process',
         card1d: 'Words and code commands are learned together, not separately.',
         card2t: 'No analogues',

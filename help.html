@@ -16,6 +16,9 @@
       --brown: #693B37;
       --cream: #F5F2EB;
       --orange: #E07A3E;
+      /* See the note in index.html: the ear orange cannot carry a readable
+         label (2.99:1 on white), so buttons use this deepened match at 4.64:1. */
+      --orange-cta: #B85A20;
       --accent-700: #99501B;
       --neutral-100: #ECE7DC;
       --neutral-400: #C7BEAE;
@@ -325,8 +328,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--brown);
-      color: var(--cream);
+      background: var(--orange-cta);
+      color: #fff;
       font-weight: 700;
       font-size: 16px;
       text-decoration: none;
@@ -337,20 +340,20 @@
     }
 
     .cta:hover, .cta:focus-visible {
-      background: var(--orange);
+      background: var(--accent-700);
       transform: translateY(-1px);
     }
 
     .cta--ghost {
       background: transparent;
-      color: var(--brown);
-      border: 2px solid var(--brown);
+      color: var(--accent-700);
+      border: 2px solid var(--orange-cta);
       font-weight: 600;
     }
 
     .cta--ghost:hover, .cta--ghost:focus-visible {
-      background: var(--brown);
-      color: var(--cream);
+      background: var(--orange-cta);
+      color: #fff;
     }
 
     .back-link {
@@ -429,14 +432,14 @@
         <div class="shot-frame">
           <img src="media/screenshots/01-home.jpeg" alt="Начальный экран axo: аксолотль, поле для имени и кнопка «Играть».">
           <span class="shot-empty-label">Скриншот начального экрана<br>(media/screenshots/01-home.jpeg)</span>
-          <span class="pin" style="--x:50%; --y:32%">1</span>
-          <span class="pin" style="--x:50%; --y:48%">2</span>
-          <span class="pin" style="--x:50%; --y:61%">3</span>
-          <span class="pin" style="--x:89%; --y:4.5%">4</span>
-          <span class="pin" style="--x:50%; --y:76%">5</span>
+          <span class="pin" style="--x:31%; --y:32%">1</span>
+          <span class="pin" style="--x:8%; --y:48%">2</span>
+          <span class="pin" style="--x:26%; --y:61%">3</span>
+          <span class="pin" style="--x:89%; --y:9%">4</span>
+          <span class="pin" style="--x:38%; --y:72.5%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Аксолотль axo – талисман игры. Играет ребёнок не за него: своего героя он выбирает на следующем экране.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Аксолотль axo – талисман игры.</li>
           <li><span class="pin-num" aria-hidden="true">2</span> Поле для имени. Только имя, ничего больше – оно нужно, чтобы игра здоровалась с ребёнком и хранила его результаты на этом устройстве.</li>
           <li><span class="pin-num" aria-hidden="true">3</span> Кнопка «Играть». С неё начинается всё.</li>
           <li><span class="pin-num" aria-hidden="true">4</span> Два переключателя звука: 🗣 голос, который произносит слова, и 🎵 фоновая музыка. Каждый выключается отдельно и остаётся выключенным.</li>
@@ -455,9 +458,9 @@
         <div class="shot-frame">
           <img src="media/screenshots/02-animal.jpeg" alt="Экран выбора героя: медведь, хомяк и кролик открыты, остальные под замком.">
           <span class="shot-empty-label">Скриншот выбора героя<br>(media/screenshots/02-animal.jpeg)</span>
-          <span class="pin" style="--x:49%; --y:8%">1</span>
-          <span class="pin" style="--x:32%; --y:23%">2</span>
-          <span class="pin" style="--x:66%; --y:42%">3</span>
+          <span class="pin" style="--x:9%; --y:8.3%">1</span>
+          <span class="pin" style="--x:10%; --y:23%">2</span>
+          <span class="pin" style="--x:85%; --y:42.5%">3</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> Заголовок по-английски: «Pick your friend!». Интерфейс игры английский с первого экрана – на родной язык переводятся только подсказки.</li>
@@ -480,11 +483,11 @@
         <div class="shot-frame">
           <img src="media/screenshots/03-map.jpeg" alt="Карта мира axo: четыре острова-зоны с пронумерованными точками уровней.">
           <span class="shot-empty-label">Скриншот карты мира<br>(media/screenshots/03-map.jpeg)</span>
-          <span class="pin" style="--x:44%; --y:17%">1</span>
-          <span class="pin" style="--x:12%; --y:34%">2</span>
-          <span class="pin" style="--x:38%; --y:27%">3</span>
-          <span class="pin" style="--x:71%; --y:44%">4</span>
-          <span class="pin" style="--x:71%; --y:80%">5</span>
+          <span class="pin" style="--x:88%; --y:19%">1</span>
+          <span class="pin" style="--x:5%; --y:34%">2</span>
+          <span class="pin" style="--x:38.7%; --y:23.5%">3</span>
+          <span class="pin" style="--x:81%; --y:44%">4</span>
+          <span class="pin" style="--x:50%; --y:59.5%">5</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> Игра здоровается с ребёнком по имени, рядом – выбранный герой.</li>
@@ -510,11 +513,11 @@
         <div class="shot-frame">
           <img src="media/screenshots/04-learn.jpeg" alt="Карточка слова go: значок звука, кнопка языка, буквы для набора и полоска с героем.">
           <span class="shot-empty-label">Скриншот карточки слова<br>(media/screenshots/04-learn.jpeg)</span>
-          <span class="pin" style="--x:48%; --y:23%">1</span>
-          <span class="pin" style="--x:31%; --y:28%">2</span>
-          <span class="pin" style="--x:68%; --y:28%">3</span>
-          <span class="pin" style="--x:50%; --y:54%">4</span>
-          <span class="pin" style="--x:40%; --y:68%">5</span>
+          <span class="pin" style="--x:48%; --y:22%">1</span>
+          <span class="pin" style="--x:22%; --y:28%">2</span>
+          <span class="pin" style="--x:68%; --y:22%">3</span>
+          <span class="pin" style="--x:29%; --y:54.5%">4</span>
+          <span class="pin" style="--x:19%; --y:68%">5</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> Само слово, крупно и по-английски. Здесь это <strong>go</strong> – «иди».</li>
@@ -539,12 +542,12 @@
         <div class="shot-frame">
           <img src="media/screenshots/05-challenge.jpeg" alt="Экран задания: игровое поле с подарком, список набранных команд и кнопка «Go!».">
           <span class="shot-empty-label">Скриншот первого задания<br>(media/screenshots/05-challenge.jpeg)</span>
-          <span class="pin" style="--x:30%; --y:40%">1</span>
-          <span class="pin" style="--x:48%; --y:21%">2</span>
-          <span class="pin" style="--x:78%; --y:33%">3</span>
-          <span class="pin" style="--x:40%; --y:59%">4</span>
-          <span class="pin" style="--x:43%; --y:70%">5</span>
-          <span class="pin" style="--x:61%; --y:82%">6</span>
+          <span class="pin" style="--x:12%; --y:12.5%">1</span>
+          <span class="pin" style="--x:48%; --y:12.5%">2</span>
+          <span class="pin" style="--x:78%; --y:12.5%">3</span>
+          <span class="pin" style="--x:7%; --y:59.5%">4</span>
+          <span class="pin" style="--x:96%; --y:70.5%">5</span>
+          <span class="pin" style="--x:61%; --y:90%">6</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> Игровое поле. Оранжевая стрелка у героя показывает, куда он смотрит – это и решает, куда его поведёт команда <strong>go</strong>.</li>
@@ -562,10 +565,10 @@
 
     <section class="guide-close">
       <h2>Что дальше</h2>
-      <p>Лучший способ понять игру – открыть её. Демо работает прямо в браузере, без регистрации.</p>
+      <p>Доступ к игре открывается по коду – его выдаёт @axo_manager. Посмотреть игру можно и сразу: демо работает прямо в браузере, без регистрации.</p>
       <div class="cta-row">
-        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Попробовать бесплатно</a>
-        <a class="cta cta--ghost" href="https://t.me/axo_manager">Получить доступ</a>
+        <a class="cta" href="https://t.me/axo_manager">Получить доступ</a>
+        <a class="cta cta--ghost" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Попробовать бесплатно</a>
       </div>
       <p style="margin-top:14px; font-size:15px;">Кнопка «Получить доступ» откроет чат в Telegram с @axo_manager.</p>
       <a class="back-link" href="index.html">← На главную</a>
@@ -586,14 +589,14 @@
         <div class="shot-frame">
           <img src="media/screenshots/01-home.jpeg" alt="The axo start screen: the axolotl, a name field and a Play button.">
           <span class="shot-empty-label">Start screen screenshot<br>(media/screenshots/01-home.jpeg)</span>
-          <span class="pin" style="--x:50%; --y:32%">1</span>
-          <span class="pin" style="--x:50%; --y:48%">2</span>
-          <span class="pin" style="--x:50%; --y:61%">3</span>
-          <span class="pin" style="--x:89%; --y:4.5%">4</span>
-          <span class="pin" style="--x:50%; --y:76%">5</span>
+          <span class="pin" style="--x:31%; --y:32%">1</span>
+          <span class="pin" style="--x:8%; --y:48%">2</span>
+          <span class="pin" style="--x:26%; --y:61%">3</span>
+          <span class="pin" style="--x:89%; --y:9%">4</span>
+          <span class="pin" style="--x:38%; --y:72.5%">5</span>
         </div>
         <ol class="pin-legend">
-          <li><span class="pin-num" aria-hidden="true">1</span> Axo the axolotl – the mascot of the game. Your child does not play as Axo: they pick their own hero on the next screen.</li>
+          <li><span class="pin-num" aria-hidden="true">1</span> Axo the axolotl – the mascot of the game.</li>
           <li><span class="pin-num" aria-hidden="true">2</span> The name field. A first name and nothing else – it lets the game greet your child and keep their results on this device.</li>
           <li><span class="pin-num" aria-hidden="true">3</span> The Play button. Everything starts here.</li>
           <li><span class="pin-num" aria-hidden="true">4</span> Two sound switches: 🗣 the voice that speaks the words, and 🎵 the background music. Each turns off separately and stays off.</li>
@@ -612,9 +615,9 @@
         <div class="shot-frame">
           <img src="media/screenshots/02-animal.jpeg" alt="The hero picker: bear, hamster and rabbit open, the rest behind padlocks.">
           <span class="shot-empty-label">Hero picker screenshot<br>(media/screenshots/02-animal.jpeg)</span>
-          <span class="pin" style="--x:49%; --y:8%">1</span>
-          <span class="pin" style="--x:32%; --y:23%">2</span>
-          <span class="pin" style="--x:66%; --y:42%">3</span>
+          <span class="pin" style="--x:9%; --y:8.3%">1</span>
+          <span class="pin" style="--x:10%; --y:23%">2</span>
+          <span class="pin" style="--x:85%; --y:42.5%">3</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> The heading is in English: "Pick your friend!". The game's interface is English from the very first screen – only the hints are translated.</li>
@@ -637,11 +640,11 @@
         <div class="shot-frame">
           <img src="media/screenshots/03-map.jpeg" alt="The axo world map: four island zones with numbered level dots.">
           <span class="shot-empty-label">World map screenshot<br>(media/screenshots/03-map.jpeg)</span>
-          <span class="pin" style="--x:44%; --y:17%">1</span>
-          <span class="pin" style="--x:12%; --y:34%">2</span>
-          <span class="pin" style="--x:38%; --y:27%">3</span>
-          <span class="pin" style="--x:71%; --y:44%">4</span>
-          <span class="pin" style="--x:71%; --y:80%">5</span>
+          <span class="pin" style="--x:88%; --y:19%">1</span>
+          <span class="pin" style="--x:5%; --y:34%">2</span>
+          <span class="pin" style="--x:38.7%; --y:23.5%">3</span>
+          <span class="pin" style="--x:81%; --y:44%">4</span>
+          <span class="pin" style="--x:50%; --y:59.5%">5</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> The game greets your child by name, with their chosen hero beside it.</li>
@@ -667,11 +670,11 @@
         <div class="shot-frame">
           <img src="media/screenshots/04-learn.jpeg" alt="The word card for go: a sound icon, the language button, letter tiles and a strip with the hero.">
           <span class="shot-empty-label">Word card screenshot<br>(media/screenshots/04-learn.jpeg)</span>
-          <span class="pin" style="--x:48%; --y:23%">1</span>
-          <span class="pin" style="--x:31%; --y:28%">2</span>
-          <span class="pin" style="--x:68%; --y:28%">3</span>
-          <span class="pin" style="--x:50%; --y:54%">4</span>
-          <span class="pin" style="--x:40%; --y:68%">5</span>
+          <span class="pin" style="--x:48%; --y:22%">1</span>
+          <span class="pin" style="--x:22%; --y:28%">2</span>
+          <span class="pin" style="--x:68%; --y:22%">3</span>
+          <span class="pin" style="--x:29%; --y:54.5%">4</span>
+          <span class="pin" style="--x:19%; --y:68%">5</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> The word itself, large and in English. Here it is <strong>go</strong>.</li>
@@ -696,12 +699,12 @@
         <div class="shot-frame">
           <img src="media/screenshots/05-challenge.jpeg" alt="A challenge screen: the grid with a gift box, the list of typed commands and the Go button.">
           <span class="shot-empty-label">First challenge screenshot<br>(media/screenshots/05-challenge.jpeg)</span>
-          <span class="pin" style="--x:30%; --y:40%">1</span>
-          <span class="pin" style="--x:48%; --y:21%">2</span>
-          <span class="pin" style="--x:78%; --y:33%">3</span>
-          <span class="pin" style="--x:40%; --y:59%">4</span>
-          <span class="pin" style="--x:43%; --y:70%">5</span>
-          <span class="pin" style="--x:61%; --y:82%">6</span>
+          <span class="pin" style="--x:12%; --y:12.5%">1</span>
+          <span class="pin" style="--x:48%; --y:12.5%">2</span>
+          <span class="pin" style="--x:78%; --y:12.5%">3</span>
+          <span class="pin" style="--x:7%; --y:59.5%">4</span>
+          <span class="pin" style="--x:96%; --y:70.5%">5</span>
+          <span class="pin" style="--x:61%; --y:90%">6</span>
         </div>
         <ol class="pin-legend">
           <li><span class="pin-num" aria-hidden="true">1</span> The grid. The orange arrow by the hero shows which way they are facing – and that is what decides where the command <strong>go</strong> takes them.</li>
@@ -719,10 +722,10 @@
 
     <section class="guide-close">
       <h2>What next</h2>
-      <p>The best way to understand the game is to open it. The demo runs straight in your browser, with no signup.</p>
+      <p>Access to the game comes by code, handed out by @axo_manager. You can also look at the game right away: the demo runs straight in your browser, with no signup.</p>
       <div class="cta-row">
-        <a class="cta" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Try it free</a>
-        <a class="cta cta--ghost" href="https://t.me/axo_manager">Get access</a>
+        <a class="cta" href="https://t.me/axo_manager">Get access</a>
+        <a class="cta cta--ghost" href="https://arinaesp.github.io/axo-demo/" target="_blank" rel="noopener">Try it free</a>
       </div>
       <p style="margin-top:14px; font-size:15px;">Get access opens a Telegram chat with @axo_manager.</p>
       <a class="back-link" href="index.html">← Back to home</a>
