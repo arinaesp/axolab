@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ENGLISH LINK-PREVIEW STUB — this is the URL to share in AXO GLOBAL.
+
+  Why it exists: Telegram's crawler fetches a URL and reads its <meta> tags,
+  and it does NOT run JavaScript. So the page's own device-language switch can
+  never reach the preview card, and `?lang=en` changes nothing either — GitHub
+  Pages serves byte-identical HTML for `index.html` and `index.html?lang=en`.
+  A different card requires a genuinely different URL. This is that URL.
+
+  It holds ONLY tags and a redirect. The crawler stops here and shows the
+  English card; a human's browser runs the script below and lands on the real
+  landing page in English. Nothing here duplicates page content, which is what
+  keeps the one-self-contained-index.html rule intact — if you find yourself
+  copying markup into this file, the approach has gone wrong.
+
+  When the landing page's og:description changes, change it here too.
+-->
+<title>AXO — English through Coding</title>
+<meta name="description" content="A child moves the character with English commands, building logic and vocabulary. A Telegram game for ages 5 to 9.">
+<meta property="og:title" content="AXO — English through Coding">
+<meta property="og:description" content="A child moves the character with English commands, building logic and vocabulary. A Telegram game for ages 5 to 9.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arinaesp.github.io/axo-landing/en/">
+<meta property="og:image" content="https://arinaesp.github.io/axo-landing/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://arinaesp.github.io/axo-landing/index.html">
+<link rel="shortcut icon" href="../assets/icons/favicon.ico">
+<!-- In <head> and before any markup, so the redirect happens before paint and
+     there is no flash of this page. location.replace keeps the stub out of the
+     back button's history. -->
+<script>location.replace('../index.html?lang=en');</script>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F5F2EB;
+    color: #693B37;
+    font-family: system-ui, sans-serif;
+    text-align: center;
+  }
+  a { color: #B85A20; }
+</style>
+</head>
+<body>
+  <!-- Only ever seen with JavaScript off. -->
+  <p>Opening AXO… <a href="../index.html?lang=en">Continue to AXO</a></p>
+</body>
+</html>
