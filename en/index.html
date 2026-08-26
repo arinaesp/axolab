@@ -29,7 +29,14 @@
 <meta property="og:image" content="https://arinaesp.github.io/axo-landing/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://arinaesp.github.io/axo-landing/index.html">
+<!-- SELF-REFERENCING canonical, and it must stay that way. It pointed at
+     ../index.html until 2026-08-26, and Telegram FOLLOWED IT: the crawler read
+     the canonical, fetched the Russian page and rendered its tags, so this stub
+     produced a Russian card no matter what its own tags said. Never canonicalise
+     a language stub to the other language's page. Do not add <meta name="robots"
+     content="noindex"> as an alternative either — a crawler that respects it may
+     decline to build a preview at all, which is worse. -->
+<link rel="canonical" href="https://arinaesp.github.io/axo-landing/en/">
 <link rel="shortcut icon" href="../assets/icons/favicon.ico">
 <!-- In <head> and before any markup, so the redirect happens before paint and
      there is no flash of this page. location.replace keeps the stub out of the
