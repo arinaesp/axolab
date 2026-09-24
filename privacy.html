@@ -249,13 +249,15 @@
     <p>Сведения о пройденных уроках, лучшем времени, выбранном персонаже и имени игрового профиля хранятся только на устройстве пользователя и не передаются на серверы Сервиса, за исключением итоговой статистики, указанной в п. 2.3. При очистке данных Приложения на устройстве прогресс сбрасывается.</p>
 
     <h3>2.3. Анонимная статистика</h3>
-    <p>Сервис учитывает два события: первый запуск Приложения на устройстве и первое прохождение каждой учебной зоны. На сервере сохраняются только итоговые показатели:</p>
+    <p>Сервис учитывает четыре события. Каждое из них учитывается на одном устройстве только один раз, а активность — один раз в месяц:</p>
     <ul>
-      <li>число устройств и число прохождений учебных зон;</li>
-      <li>страна, определяемая по подключению, без точной геолокации;</li>
-      <li>период (например, месяц).</li>
+      <li>первый запуск Приложения на устройстве (с указанием языка Приложения);</li>
+      <li>первый запуск Приложения в каждом календарном месяце (активные устройства);</li>
+      <li>первое прохождение каждого урока;</li>
+      <li>первое прохождение каждой учебной зоны.</li>
     </ul>
-    <p>IP-адреса, идентификаторы устройств, имена и Telegram User ID при этом не сохраняются. Чтобы одно устройство не учитывалось дважды, на нём сохраняется техническая отметка.</p>
+    <p>На сервере сохраняются только итоговые показатели по каждому событию в разбивке по стране, определяемой по подключению без точной геолокации, и по месяцу. Показатели запусков в Telegram подтверждаются цифровой подписью Telegram, показатели запусков в браузере учитываются отдельно.</p>
+    <p>IP-адреса, идентификаторы устройств, имена и Telegram User ID при этом не сохраняются. Чтобы событие не учитывалось на устройстве дважды, на нём сохраняются технические отметки.</p>
     <p>Показатели меньше 10 не публикуются и отображаются как «менее 10». Итоговые показатели могут использоваться в научных публикациях, грантовых заявках и отчётах и никогда не передаются рекламодателям. Они не связаны с конкретными пользователями, не являются персональными данными и поэтому не могут быть удалены по запросу.</p>
 
     <h2>3. Данные, которые Сервис не собирает</h2>
@@ -312,13 +314,15 @@
     <p>Information on completed lessons, best times, the selected character and the player name is stored solely on the user's device and is not transmitted to the Service's servers, save for the aggregate statistics described in section 2.3. Clearing the App's data on the device resets the progress.</p>
 
     <h3>2.3. Anonymous statistics</h3>
-    <p>The Service records two events: the first launch of the App on a device, and the first completion of each learning zone. Only aggregate figures are stored on the server:</p>
+    <p>The Service records four events. Each is counted only once per device, and activity once per month:</p>
     <ul>
-      <li>the number of devices and the number of learning-zone completions;</li>
-      <li>the country, determined from the connection, without precise geolocation;</li>
-      <li>the period (for example, the month).</li>
+      <li>the first launch of the App on a device (together with the App's language);</li>
+      <li>the first launch of the App in each calendar month (active devices);</li>
+      <li>the first completion of each lesson;</li>
+      <li>the first completion of each learning zone.</li>
     </ul>
-    <p>No IP addresses, device identifiers, names or Telegram User IDs are stored in connection with these figures. A technical marker is stored on the device solely to prevent it from being counted twice.</p>
+    <p>Only aggregate figures for each event are stored on the server, broken down by country, determined from the connection without precise geolocation, and by month. Figures for launches in Telegram are verified by Telegram's digital signature; figures for launches in a browser are kept separately.</p>
+    <p>No IP addresses, device identifiers, names or Telegram User IDs are stored in connection with these figures. Technical markers are stored on the device solely to prevent an event from being counted twice.</p>
     <p>Figures below 10 are not published and are shown as "fewer than 10". The aggregate figures may be used in academic publications, grant applications and reports, and are never shared with advertisers. They are not linked to any individual user, do not constitute personal data, and therefore cannot be deleted on request.</p>
 
     <h2>3. Data the Service does not collect</h2>
