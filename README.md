@@ -62,7 +62,7 @@ axo's approach to teaching English through coding commands was designed by Arina
 
 ## Official channels
 
-axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t.me/axocoder_bot), which opens the game, and the public channels **AXO GLOBAL** [t.me/axoglobal](https://t.me/axoglobal) (English) and **AXO Lab** [t.me/axo_lab](https://t.me/axo_lab) (Russian). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not answer private messages in Telegram, never asks for payment, and never asks for passwords, Telegram login codes, SMS codes, or card details. See [Terms of Use §2](https://arinaesp.github.io/axo-landing/terms.html) for details.
+axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t.me/axocoder_bot), which opens the game, and the public channels **AXO GLOBAL** [t.me/axoglobal](https://t.me/axoglobal) (English) and **AXO Lab** [t.me/axo_lab](https://t.me/axo_lab) (Russian). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not answer private messages in Telegram, never asks for payment, and never asks for passwords, Telegram login codes, SMS codes, or card details. See [Terms of Use §2](https://axolab.space/terms.html) for details.
 
 ## Author and rights
 
