@@ -351,6 +351,22 @@
 
     .hero-cta { margin-top: 26px; }
 
+    .hero-cta .cta { min-width: 250px; justify-content: center; }
+
+    .hero-channel {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 4px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent-700);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero-channel:hover, .hero-channel:focus-visible { color: var(--brown); }
+
     .guide-link-wrap { margin: 22px 0 8px; }
 
     .guide-link {
@@ -617,21 +633,22 @@
 
   <main>
     <section class="hero container">
-      <p class="kicker" data-i18n="kicker">Мини-приложение в Telegram</p>
+      <p class="kicker" data-i18n="kicker">Telegram · браузер</p>
       <h1 data-i18n="heading">Английский через программирование</h1>
       <p class="hero-para" data-i18n="subtitle">Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.</p>
       <div class="hero-cta">
         <div class="cta-row">
           <a class="cta" href="https://t.me/axocoder_bot">
-            <span data-i18n="cta">Играть бесплатно</span>
+            <span data-i18n="ctaTelegram">Играть в Telegram</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
           </a>
-          <a class="cta cta--ghost channel-link" href="https://t.me/axo_lab">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</span>
+          <a class="cta" href="https://play.axolab.space">
+            <span data-i18n="ctaBrowser">Играть в браузере</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </a>
         </div>
-        <p class="cta-note" data-i18n="heroCtaNote">Бесплатно, прямо в Telegram. На канале – инструкции и ответы на вопросы.</p>
+        <p class="cta-note" data-i18n="heroCtaNote">Бесплатно, в Telegram или в любом браузере. На канале – инструкции и ответы на вопросы.</p>
+        <a class="hero-channel channel-link" href="https://t.me/axo_lab" data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</a>
       </div>
       <ol class="card-grid card-grid--intro">
         <li class="value-card">
@@ -750,11 +767,13 @@
     const i18n = {
       ru: {
         title: 'axo – Английский через программирование',
-        kicker: 'Мини-приложение в Telegram',
+        kicker: 'Telegram · браузер',
         heading: 'Английский через программирование',
         subtitle: 'Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.',
         ctaGroup: 'Присоединяйтесь к AXO Lab',
-        heroCtaNote: 'Бесплатно, прямо в Telegram. На канале – инструкции и ответы на вопросы.',
+        heroCtaNote: 'Бесплатно, в Telegram или в любом браузере. На канале – инструкции и ответы на вопросы.',
+        ctaTelegram: 'Играть в Telegram',
+        ctaBrowser: 'Играть в браузере',
         card1t: 'Один сквозной процесс',
         card1d: 'Слова и команды кода учатся вместе, а не по отдельности.',
         card2t: 'Интегрированный подход',
@@ -788,11 +807,13 @@
       },
       en: {
         title: 'axo – English through coding',
-        kicker: 'Telegram Mini App',
+        kicker: 'Telegram · Browser',
         heading: 'English through coding',
         subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
         ctaGroup: 'Join AXO Global',
-        heroCtaNote: 'Free, right inside Telegram. The channel has the instructions and answers to questions.',
+        heroCtaNote: 'Free, in Telegram or any browser. The channel has instructions and answers.',
+        ctaTelegram: 'Play in Telegram',
+        ctaBrowser: 'Play in browser',
         card1t: 'One continuous process',
         card1d: 'Words and code commands are learned together, not separately.',
         card2t: 'An integrated approach',
