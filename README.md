@@ -1,73 +1,70 @@
-# axo — Landing Page
+<p align="center"><img src="https://axolab.space/media/home/axo.png" alt="axo" width="140"></p>
 
-Landing page for **axo**, a Telegram Mini App that introduces children aged 5–9 to English vocabulary through coding commands.
+# axo
 
-Kids give the hero simple English commands — `jump`, `go up`, `go(3)` — and see the result on screen. The word isn't memorised in the abstract: it's the tool that gets the hero through the challenge. Language meets logic in one calm, timer-free game.
+> **Just want to play?** In Telegram: [t.me/axocoder_bot](https://t.me/axocoder_bot) · In a browser: [play.axolab.space](https://play.axolab.space)
 
-axo is an **introductory stage** — an entry point into English words and command logic, not a full language course. Lessons cover letters, sounds, first words, and simple sequences of commands.
+**English through coding, for children aged 5–9.** A free educational game in which a child learns first English words and the logic of commands at the same time, in one activity rather than two.
 
-## Live
+**Runs on:** any phone, tablet or computer, in Telegram or any browser. Free, no account, no ads, no purchases.
 
-**https://axolab.space/**
+![The axo world map](https://axolab.space/media/home/shot-map.jpg)
 
-Deployed via GitHub Pages from `main`. Push to deploy.
+## The idea
 
-## Structure
+In most language games, the words sit beside the gameplay: the child reads or hears them, then presses buttons to play. In axo, **the English word is the move.** Typing `jump` is, at one and the same time, a word in English, an action in the game and an instruction in a program. The child doesn't learn the word first and use it later: using it is how the hero gets through the level.
 
-```
-├── index.html        # Landing page (RU/EN bilingual, styles + script inline)
-├── privacy.html      # Privacy Policy (RU/EN)
-├── terms.html        # Terms of Use (RU/EN)
-└── assets/
-    ├── icons/        # Favicon set, axo brand logo (SVG)
-    └── og-image.png  # Social preview
-```
+That is the heart of **CT-DGBLL** (Computational Thinking Digital Game-Based Language Learning), the framework behind axo, created by **Arina Bolotbekova**, an IELTS instructor with nine years of teaching children aged 5–14. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
 
-This repo holds the landing page only. The Mini App itself, its lesson content, and its database live in a separate private repository.
+## How a lesson works
 
-## Stack
+Every lesson has two parts:
 
-Vanilla HTML, CSS, and a few lines of JS. No framework, no bundler, no build step, no dependencies — `index.html` is self-contained, with one inline `<style>` block and one inline `<script>`. Fonts are the only external request.
+- **Learn.** The child meets one new word: hears it, spells it with letter tiles, and sees what it does on the board.
+- **Play.** The child types that word, together with the words already learned, to guide the hero to the prize.
 
-Deliberate: the page is a single document served from a CDN edge, reached mostly from an Instagram bio link on a phone, and it needs to stay fast on a slow connection more than it needs a toolchain.
+Each lesson adds one new idea, and every level asks the child to use earlier words again, so vocabulary and logic build up together. There are no timers and no "game over": a wrong command simply doesn't move the hero, and the child tries again as many times as they need. Hints and captions come in 10 languages; English is always the language of the game itself.
 
-## Features
+![A Learn card](https://axolab.space/media/home/shot-learn.jpg)
 
-- Bilingual RU/EN toggle across all pages — content switches without a page reload
-- Inline SVG Venn diagram showing axo at the intersection of Coding and English
-- Scroll-triggered reveal animations (`IntersectionObserver` + CSS `@keyframes`, spring easing)
-- Mascot float animation with interactive hover
-- Responsive — single-column on mobile, expands on desktop
-- Respects `prefers-reduced-motion`
-- Keyboard-accessible with visible focus states
-- No cookies, no analytics, no third-party trackers
+The first two zones (20 levels) are ready now; new zones are on the way. How to play, screen by screen: [axolab.space/en/help.html](https://axolab.space/en/help.html)
 
-## Brand
+## For teachers and schools
 
-The landing and the guide (`index.html`, `help.html`) use a bright look of their own. The legal pages keep the calmer original.
+axo is free to use in class, including in paid lessons, as long as the fee is for your teaching and not for access to axo.
 
-| Role       | Value                                      |
-|------------|--------------------------------------------|
-| Hero bands | `#2B1D70` indigo                           |
-| Ink        | `#1C1442`                                  |
-| Background | `#F6F4FF`                                  |
-| Accents    | `#FFD23F` sun, `#FF7A2F` axo orange, `#FF78B9` pink, `#3DDC97` mint, `#54C8F5` sky |
-| Display    | Unbounded (600, 800, 900)                  |
-| Body       | Onest (400, 500, 700)                      |
-| Commands   | JetBrains Mono (700)                       |
+- **Schools, learning centres and clubs:** before you start, email [hello@axolab.space](mailto:hello@axolab.space) with the name of your organisation, its city and country, and whether we may publish the name. You can start as soon as the email is sent, with no need to wait for a reply. Families and private teachers don't need to write.
+- **You can:** use axo in lessons, recommend it, link to the official bot and channels, and use screenshots or short screen recordings in reviews, research and teaching materials, credited **"AXO, by Arina Bolotbekova"**.
+- **Please don't:** charge for access to axo, resell or repackage it, copy or clone the app or its lessons, or use it to collect children's data or require families to register anywhere.
+- **Children play through the official bot or play.axolab.space.** Supervision and parents' consent are the school's or teacher's responsibility. There are no contracts or individual support; the author builds new lessons first.
 
-## Methodology
+Full conditions: [Terms of Use §5](https://axolab.space/terms.html?lang=en).
 
-axo's approach to teaching English through coding commands was designed by Arina Bolotbekova, drawing on hands-on classroom experience with children. It builds on TPR (Total Physical Response), developed by psychologist James Asher in the 1960s: a word is learned through the action it produces, so the child types a command and immediately watches it happen on screen.
+## Privacy
 
-## Official channels
+axo keeps no personal data about players. The only thing counted is anonymous totals per month and country (devices, and first completions of each lesson and zone), and figures under 10 are never published. No ads, no tracking. Details: [Privacy Policy](https://axolab.space/privacy.html?lang=en).
 
-axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t.me/axocoder_bot), which opens the game, and the public channels **AXO GLOBAL** [t.me/axoglobal](https://t.me/axoglobal) (English) and **AXO Lab** [t.me/axo_lab](https://t.me/axo_lab) (Russian). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not answer private messages in Telegram, never asks for payment, and never asks for passwords, Telegram login codes, SMS codes, or card details. See [Terms of Use §2](https://axolab.space/terms.html) for details.
+## Official addresses
 
-## Author and rights
+Anyone can use the name "axo", so only these are ours:
 
-Arina Bolotbekova — developer, methodology creator, and lesson author.
+- the bot [t.me/axocoder_bot](https://t.me/axocoder_bot) and [play.axolab.space](https://play.axolab.space)
+- the website [axolab.space](https://axolab.space)
+- the channels [t.me/axoglobal](https://t.me/axoglobal) (English) and [t.me/axo_lab](https://t.me/axo_lab) (Russian)
+- email [hello@axolab.space](mailto:hello@axolab.space)
 
-The brand, mascot, lesson content, and methodology belong to the author. Use in classes, links, and screenshots with credit are allowed on the conditions in [Terms of Use §5](https://axolab.space/terms.html); anything else needs the author's written consent (§5.6, §6).
+We don't answer private messages in Telegram, and **the axo app never asks for payment to play**. Anyone who asks you to pay to play is not us.
 
-Contact: by email only, [hello@axolab.space](mailto:hello@axolab.space)
+## Support
+
+If axo helped your child or your class, the best support is:
+
+- play, and tell other families and teachers about [axolab.space](https://axolab.space);
+- credit **"AXO, by Arina Bolotbekova"** when you show or write about it;
+- send feedback and ideas to [hello@axolab.space](mailto:hello@axolab.space).
+
+## License
+
+Copyright (c) 2026 Arina Bolotbekova. All rights reserved.
+
+axo (its lessons, characters, artwork, audio, code and the CT-DGBLL framework behind it) belongs to its author. **Free to use for learning and teaching, including in paid classes**, on the conditions above. It is not open source: copying, cloning, reselling or building it into another product needs written permission. Want to partner, translate or build on axo? Email [hello@axolab.space](mailto:hello@axolab.space). Full terms: [axolab.space/terms.html](https://axolab.space/terms.html?lang=en).
