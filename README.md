@@ -66,6 +66,6 @@ axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t
 
 Arina Bolotbekova — developer, methodology creator, and lesson author.
 
-The brand, mascot, lesson content, and methodology are not licensed for reuse — see [Terms of Use §5–6](https://arinaesp.github.io/axo-landing/terms.html).
+The brand, mascot, lesson content, and methodology belong to the author. Use in classes, links, and screenshots with credit are allowed on the conditions in [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html); anything else needs the author's written consent (§5.6, §6).
 
 Contact: by email only, [axocoder@proton.me](mailto:axocoder@proton.me)
