@@ -68,4 +68,4 @@ Arina Bolotbekova — developer, methodology creator, and lesson author.
 
 The brand, mascot, lesson content, and methodology belong to the author. Use in classes, links, and screenshots with credit are allowed on the conditions in [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html); anything else needs the author's written consent (§5.6, §6).
 
-Contact: by email only, [axocoder@proton.me](mailto:axocoder@proton.me)
+Contact: by email only, [hello@axolab.space](mailto:hello@axolab.space)
