@@ -44,15 +44,17 @@ Deliberate: the page is a single document served from a CDN edge, reached mostly
 
 ## Brand
 
+The landing and the guide (`index.html`, `help.html`) use a bright look of their own. The legal pages keep the calmer original.
+
 | Role       | Value                                      |
 |------------|--------------------------------------------|
-| Primary    | `#693B37` warm brown                       |
-| Background | `#F5F2EB` cream                            |
-| Accent     | `#E07A3E` orange                           |
-| Sage       | `#CCDBB2` green (mascot circle, chart)     |
-| Display    | M PLUS Rounded 1c (800)                    |
-| Brand      | Caprasimo (single-storey "a" wordmark)     |
-| Body       | Figtree (400, 600, 700)                    |
+| Hero bands | `#2B1D70` indigo                           |
+| Ink        | `#1C1442`                                  |
+| Background | `#F6F4FF`                                  |
+| Accents    | `#FFD23F` sun, `#FF7A2F` axo orange, `#FF78B9` pink, `#3DDC97` mint, `#54C8F5` sky |
+| Display    | Unbounded (600, 800, 900)                  |
+| Body       | Onest (400, 500, 700)                      |
+| Commands   | JetBrains Mono (700)                       |
 
 ## Methodology
 

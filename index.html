@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>axo – Английский через программирование</title>
   <meta name="description" content="Ребёнок управляет персонажем с помощью команд на английском, развивая логику и словарный запас. Мини-приложение в Telegram для детей 5–9 лет.">
   <meta property="og:title" content="AXO — Английский через программирование">
@@ -16,917 +16,728 @@
   <link rel="shortcut icon" href="assets/icons/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Caprasimo&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --brown: #693B37;
-      --cream: #F5F2EB;
-      --orange: #E07A3E;
-      /* Button fill. The ear orange #E07A3E carries only 2.99:1 against white
-         and 2.67:1 against cream, so a label on it fails WCAG AA either way.
-         This is the same hue family deepened until white text clears 4.5:1
-         (it measures 4.64:1), so the buttons read orange and the words stay
-         readable. --orange itself stays exactly as it was for links, pins,
-         focus rings and glows, where nothing sits on top of it. */
-      --orange-cta: #B85A20;
-      --sage-200: #CCDBB2;
-      --accent-100: #F9E7D8;
-      --accent-200: #F3D2B8;
-      --accent-700: #99501B;
-      --neutral-100: #ECE7DC;
-      --neutral-400: #C7BEAE;
-      --neutral-700: #645C50;
-      --muted: #6F6156;
-      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --font-display: 'M PLUS Rounded 1c', 'Nunito', sans-serif;
-      --font-brand: 'Caprasimo', serif;
-      --font-body: 'Figtree', 'Nunito Sans', sans-serif;
-      --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--brown);
-      font-family: var(--font-body);
-      font-size: 17px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    a { color: inherit; }
-
-    :focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 3px;
-      border-radius: 8px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* ---------- Header ---------- */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(245, 242, 235, 0.92);
-      backdrop-filter: blur(8px);
-      animation: headerDown 0.6s var(--spring) both;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      min-height: 44px;
-    }
-
-    .brand img { width: 26px; height: 26px; object-fit: contain; }
-
-    .brand span {
-      font-family: var(--font-brand);
-      font-size: 22px;
-      color: var(--brown);
-      line-height: 1;
-    }
-
-    /* Language toggle */
-    .lang-toggle {
-      position: relative;
-      display: flex;
-      background: var(--neutral-100);
-      border-radius: 999px;
-      padding: 3px;
-    }
-
-    .lang-thumb {
-      position: absolute;
-      top: 3px;
-      bottom: 3px;
-      left: 3px;
-      width: calc(50% - 3px);
-      background: var(--brown);
-      border-radius: 999px;
-      transition: transform 0.25s var(--spring);
-    }
-
-    .lang-toggle[data-active="en"] .lang-thumb { transform: translateX(100%); }
-
-    .lang-btn {
-      position: relative;
-      z-index: 1;
-      border: 0;
-      background: transparent;
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--muted);
-      padding: 0 16px;
-      min-height: 40px;
-      min-width: 52px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: color 0.25s ease;
-    }
-
-    .lang-btn.active { color: var(--cream); }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      text-align: center;
-      padding: 28px 0 8px;
-    }
-
-    .kicker {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-700);
-      animation: riseIn 0.6s var(--spring) 0.12s both;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(37px, 4.2vw + 22px, 64px);
-      line-height: 1.25;
-      margin: 10px 0 0;
-      animation: riseIn 0.7s var(--spring) 0.2s both;
-    }
-
-    .hero-para {
-      font-size: 15.5px;
-      line-height: 1.6;
-      color: var(--neutral-700);
-      max-width: 34ch;
-      margin: 16px auto 0;
-      animation: riseIn 0.6s var(--spring) 0.26s both;
-    }
-
-    .card-grid {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 24px;
-      text-align: left;
-    }
-
-    @media (min-width: 640px) {
-      .card-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .value-card {
-      background: var(--neutral-100);
-      border-radius: 20px;
-      padding: 24px;
-      transition: transform 0.25s var(--spring), box-shadow 0.25s ease;
-    }
-
-    .value-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(46, 43, 37, 0.14);
-    }
-
-    .value-num {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: var(--sage-200);
-      color: var(--accent-700);
-      font-family: var(--font-brand);
-      font-size: 17px;
-      border-radius: 50%;
-      margin-bottom: 12px;
-    }
-
-    .value-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 16.5px;
-      line-height: 1.4;
-    }
-
-    .value-desc {
-      font-size: 14.5px;
-      line-height: 1.55;
-      color: var(--neutral-700);
-      margin-top: 4px;
-    }
-
-    /* backwards, not both: hover transform must win after the entrance ends */
-    .card-grid--intro .value-card:nth-child(1) { animation: riseIn 0.6s var(--spring) 0.34s backwards; }
-    .card-grid--intro .value-card:nth-child(2) { animation: riseIn 0.6s var(--spring) 0.42s backwards; }
-    .card-grid--intro .value-card:nth-child(3) { animation: riseIn 0.6s var(--spring) 0.5s backwards; }
-
-    .future-heading {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 20px;
-      line-height: 1.4;
-      text-align: center;
-      margin-top: 34px;
-    }
-
-    .card-grid--future { margin-bottom: 28px; }
-
-    .hero-venn {
-      position: relative;
-      width: 100%;
-      max-width: 320px;
-      margin: 22px auto 0;
-      animation: chartIn 0.7s var(--spring) 0.58s both;
-    }
-
-    .hero-venn svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(46, 43, 37, 0.12);
-    }
-
-    .venn-label {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 13px;
-      fill: var(--brown);
-    }
-
-    .venn-axo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Caprasimo', serif;
-      font-size: 22px;
-      color: var(--brown);
-    }
-
-    @keyframes chartIn {
-      from { opacity: 0; transform: scale(0.92) translateY(12px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--orange-cta);
-      color: #fff;
-      font-weight: 700;
-      font-size: 17px;
-      text-decoration: none;
-      padding: 16px 30px;
-      min-height: 44px;
-      border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(184, 90, 32, 0.3);
-      transition: background 0.25s ease, transform 0.25s var(--spring), box-shadow 0.25s ease;
-      animation: popIn 0.55s var(--spring) 0.66s both;
-    }
-
-    .cta:hover, .cta:focus-visible {
-      background: var(--accent-700);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 22px rgba(224, 122, 62, 0.45);
-    }
-
-    .cta:active { transform: translateY(1px) scale(0.98); }
-
-    .cta svg { width: 19px; height: 19px; flex-shrink: 0; }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta--ghost {
-      background: transparent;
-      color: var(--accent-700);
-      border: 2px solid var(--orange-cta);
-      box-shadow: none;
-      font-weight: 600;
-    }
-
-    .cta--ghost:hover, .cta--ghost:focus-visible {
-      background: var(--orange-cta);
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(184, 90, 32, 0.3);
-    }
-
-    .lesson-cta { margin-top: 28px; }
-
-    .cta-note {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 12px;
-    }
-
-    .hero-cta { margin-top: 26px; }
-
-    .hero-cta .cta { min-width: 250px; justify-content: center; }
-
-    .hero-channel {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      margin-top: 4px;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--accent-700);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .hero-channel:hover, .hero-channel:focus-visible { color: var(--brown); }
-
-    .guide-link-wrap { margin: 22px 0 8px; }
-
-    .guide-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--orange);
-      text-decoration: none;
-    }
-
-    .guide-link:hover, .guide-link:focus-visible { text-decoration: underline; }
-
-    .trust {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 16px;
-      animation: fadeIn 0.7s ease 0.76s both;
-    }
-
-    /* ---------- Mascot zone ---------- */
-    .mascot-zone {
-      display: flex;
-      justify-content: center;
-      padding: 36px 0 16px;
-    }
-
-    .mascot-stage {
-      position: relative;
-      width: 262px;
-      height: 262px;
-      animation: fadeIn 0.6s ease 0.5s both;
-    }
-
-    .mascot-circle {
-      position: absolute;
-      inset: 0;
-      background: var(--sage-200);
-      border-radius: 50%;
-    }
-
-    .mascot-drop {
-      position: absolute;
-      inset: -20px 0 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: mascotDrop 0.9s var(--spring) 0.6s both;
-      pointer-events: none;
-    }
-
-    .mascot-float { animation: axoFloat 6s ease-in-out 1.6s infinite; }
-
-    .mascot-float img {
-      height: 420px;
-      width: auto;
-      margin-left: 12px;
-      transition: transform 0.3s var(--spring);
-    }
-
-    .mascot-stage:hover .mascot-float img { transform: scale(1.05) rotate(2.5deg); }
-
-    @keyframes axoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes mascotDrop {
-      from { transform: translateY(-56px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Decorative pixels */
-    .pixel {
-      position: absolute;
-      width: 11px;
-      height: 11px;
-      border-radius: 2px;
-      animation: pixelDrift 5s ease-in-out infinite;
-    }
-
-    .pixel-1 { background: var(--orange); top: 8%; right: 6%; }
-    .pixel-2 { background: var(--accent-200); bottom: 14%; left: 2%; animation-delay: 1.7s; animation-duration: 6s; }
-    .pixel-3 { background: var(--accent-100); top: 26%; left: -4%; animation-delay: 3.2s; animation-duration: 7s; }
-
-    @keyframes pixelDrift {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(4px, -8px) rotate(24deg); }
-    }
-
-    /* ---------- Lesson section ---------- */
-    .lesson { padding: 28px 0 56px; }
-
-    .lesson-card {
-      background: var(--neutral-100);
-      border-radius: 24px;
-      padding: 36px 24px;
-      text-align: center;
-    }
-
-    .lesson-card h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 1.4;
-      margin-bottom: 28px;
-    }
-
-    .steps { list-style: none; }
-
-    .step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .connector-wrap {
-      height: 34px;
-      display: flex;
-      justify-content: center;
-      margin: 6px 0;
-    }
-
-    .connector {
-      height: 0;
-      border-left: 2px dashed var(--neutral-400);
-      transition: height 0.5s ease-out 0.15s;
-    }
-
-    .step.in .connector { height: 34px; }
-
-    .step-num {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: var(--accent-200);
-      color: var(--accent-700);
-      font-family: var(--font-brand);
-      font-size: 20px;
-      border-radius: 50%;
-      margin-bottom: 12px;
-    }
-
-    .step h3 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      line-height: 1.4;
-      margin-bottom: 6px;
-    }
-
-    .step p { max-width: 30em; }
-
-    .code-pill {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 15px;
-      background: var(--accent-100);
-      color: var(--accent-700);
-      padding: 8px 14px;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .step.in .code-pill { animation: pillGlow 1s ease 0.5s 1; }
-
-    @keyframes pillGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(224, 122, 62, 0); }
-      50% { box-shadow: 0 0 0 6px rgba(224, 122, 62, 0.25); }
-    }
-
-    .tpr-note {
-      font-size: 13px;
-      color: var(--muted);
-      max-width: 34em;
-      margin: 32px auto 0;
-    }
-
-    .site-footer {
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-      padding: 0 20px 32px;
-    }
-
-    .site-footer a { color: var(--muted); text-decoration: none; }
-    .site-footer a:hover { text-decoration: underline; }
-
-    /* ---------- Entrance keyframes ---------- */
-    @keyframes headerDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
-    }
-
-    @keyframes riseIn {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    /* ---------- Scroll reveals ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s var(--spring);
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- Larger screens ---------- */
-    @media (min-width: 768px) {
-      body { font-size: 18px; }
-      .hero { padding-top: 64px; }
-      .mascot-stage { width: 320px; height: 320px; }
-      .mascot-float img { height: 510px; }
-      .lesson-card { padding: 48px 56px; }
-      .lesson-card h2 { font-size: 27px; }
-      .step h3 { font-size: 20px; }
-    }
-
-    /* ---------- Reduced motion ---------- */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; }
-      .step .connector { height: 34px; }
-    }
-  </style>
+  <!-- Unbounded (headings), Onest (body), JetBrains Mono (commands): all three carry
+       full Cyrillic, so Russian body text finally renders in the intended face. -->
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* Redesign 2026-09-24. One committed, vibrant look (no dark variant on purpose):
+     the game's zone colours turned up, on a deep "Flow" indigo, with block
+     shadows for the voxel axo. Every text colour pair measured to WCAG AA. */
+  :root {
+    color-scheme: light;
+    --ink: #1c1442;
+    --night: #2b1d70;
+    --night-2: #3a28a0;
+    --paper: #f6f4ff;
+    --white: #ffffff;
+    --sun: #ffd23f;
+    --axo: #ff7a2f;
+    --pink: #ff78b9;
+    --mint: #3ddc97;
+    --sky: #54c8f5;
+    --ink-soft: #4a4270;
+    --on-night: #efeaff;
+    --on-night-soft: #c9c0f2;
+    --block: 4px 4px 0 var(--ink);
+    --block-lg: 6px 6px 0 var(--ink);
+    --display: "Unbounded", "Arial Black", system-ui, sans-serif;
+    --body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+    --bounce: cubic-bezier(.34, 1.56, .64, 1);
+    --tile: min(84px, calc((100vw - 96px) / 3));
+  }
+  * { box-sizing: border-box; }
+  /* the hidden attribute must win over any display rule (the language lists and the RU/EN blocks rely on it) */
+  [hidden] { display: none !important; }
+  html, body { margin: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.08; text-wrap: balance; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin-inline: auto; padding-inline: 16px; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+
+  /* ---------- buttons: blocks that press down ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 14px 24px; border: 3px solid var(--ink); border-radius: 16px; font-family: var(--display); font-weight: 800; font-size: 16px; text-decoration: none; color: var(--ink); box-shadow: var(--block); transition: transform .12s ease, box-shadow .12s ease; cursor: pointer; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
+  .btn--axo { background: var(--axo); }
+  .btn--sun { background: var(--sun); }
+  .btn--white { background: var(--white); }
+
+  /* ---------- header ---------- */
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--night); color: var(--on-night); border-bottom: 3px solid var(--ink); }
+  .top-inner { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 900; font-size: 24px; text-decoration: none; }
+  .brand img { width: 38px; }
+  .nav { display: flex; gap: 4px; margin-left: auto; }
+  .nav a { font-weight: 700; font-size: 15px; text-decoration: none; padding: 10px 12px; border-radius: 12px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+  .nav a:hover { background: var(--night-2); }
+  .lang { display: flex; border: 2px solid var(--on-night-soft); border-radius: 12px; overflow: hidden; }
+  .lang button { font: 700 14px var(--body); background: none; color: var(--on-night); border: 0; min-width: 44px; min-height: 40px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--sun); color: var(--ink); }
+  @media (max-width: 760px) { .nav { display: none; } .lang { margin-left: auto; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; background: var(--night); color: var(--on-night); padding-block: 40px 72px; overflow: hidden; isolation: isolate; }
+  .hero-grid { display: grid; gap: 20px; align-items: start; }
+  @media (min-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; row-gap: 8px; } .hero { padding-block: 72px 96px; } .hero .play { margin-top: 120px; } }
+  .hero .eyebrow { color: var(--sun); display: inline-flex; gap: 10px; flex-wrap: wrap; }
+  .hero .eyebrow span + span::before { content: "·"; margin-right: 10px; color: var(--on-night-soft); }
+  .hero-head { grid-column: 1 / -1; container-type: inline-size; min-width: 0; }
+  .hero-copy { min-width: 0; align-self: start; }
+  .hero h1 { font-size: clamp(24px, 6.6cqi, 76px); font-weight: 900; margin-top: 16px; color: var(--white); }
+  .hero h1 .code-word { display: inline-block; background: var(--sun); color: var(--ink); padding: 0 .18em; border-radius: .14em; box-shadow: var(--block-lg); transform: rotate(-2deg); margin-top: .12em; white-space: nowrap; }
+  .hero h1 .code-word::after { content: ""; display: inline-block; width: .08em; height: .8em; background: var(--ink); margin-left: .08em; vertical-align: -.06em; animation: blink 1s steps(1) infinite; }
+  .hero-lede { font-size: 19px; color: var(--on-night-soft); max-width: 34ch; margin-top: 22px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .hero-note { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 17px; font-weight: 600; color: var(--white); margin-top: 20px; }
+  .hero-note svg { width: 22px; height: 22px; color: var(--sun); flex: none; }
+  .hero-note a { color: var(--sun); font-weight: 800; text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
+  /* staggered entrance: starts visible-ish via transform only */
+  .pop { animation: pop .7s var(--bounce) both; }
+  .pop-1 { animation-delay: .05s; } .pop-2 { animation-delay: .18s; } .pop-3 { animation-delay: .3s; } .pop-4 { animation-delay: .42s; } .pop-5 { animation-delay: .55s; }
+
+  /* floating coding symbols (were plain squares until 2026-09-24) */
+  .sym { position: absolute; z-index: -1; font: 700 var(--s) / 1 var(--mono); color: var(--c); text-shadow: 3px 3px 0 var(--ink); white-space: nowrap; pointer-events: none; user-select: none; animation: drift var(--d) ease-in-out infinite alternate; }
+  .sym.c1 { --s: 44px; --c: var(--pink); --d: 6s; top: 10%; left: 4%; }
+  .sym.c2 { --s: 40px; --c: var(--mint); --d: 7s; top: 72%; left: 44%; }
+  .sym.c3 { --s: 52px; --c: var(--sky); --d: 8s; top: 16%; right: 6%; }
+  .sym.c4 { --s: 40px; --c: var(--sun); --d: 5s; bottom: 8%; right: 30%; }
+  .sym.c5 { --s: 36px; --c: var(--axo); --d: 9s; top: 50%; left: 88%; }
+
+  .langs { margin-top: 28px; display: grid; gap: 10px; background: var(--night-2); border: 3px solid var(--ink); border-radius: 22px; padding: 18px 20px 20px; box-shadow: var(--block-lg); max-width: 520px; }
+  .langs-title { display: flex; align-items: center; gap: 10px; font: 800 19px var(--display); color: var(--white); }
+  .langs-title svg { width: 24px; height: 24px; color: var(--sun); flex: none; }
+  .langs-sub { color: var(--on-night-soft); font-size: 16px; }
+  .langs-list { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .langs-list li { text-align: center; white-space: nowrap; font-weight: 700; font-size: 14px; padding: 6px 6px; border: 2px solid var(--on-night-soft); border-radius: 999px; color: var(--white); }
+  /* a note, not a chip: no border, so it does not look like a button */
+  .langs-list .growing { grid-column: span 2; border: 0; text-align: left; font-weight: 600; font-style: italic; color: var(--sun); padding-inline: 4px; }
+
+  /* ---------- the playable level ---------- */
+  .play { position: relative; background: var(--white); color: var(--ink); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 10px 10px 0 var(--ink); padding: 22px; max-width: 480px; justify-self: center; width: 100%; margin-top: 70px; }
+  .play-axo { position: absolute; width: 150px; top: -112px; right: -8px; animation: bob 2.6s ease-in-out infinite; filter: drop-shadow(0 6px 0 rgba(28,20,66,.35)); pointer-events: none; }
+  .bubble { position: absolute; top: -92px; right: 136px; background: var(--sun); border: 3px solid var(--ink); border-radius: 16px 16px 4px 16px; padding: 8px 12px; font: 800 14px var(--display); box-shadow: var(--block); animation: pop .6s .9s var(--bounce) both; white-space: nowrap; }
+  .play h2 { font-size: 18px; }
+  .play-hint { font-size: 15px; color: var(--ink-soft); margin-top: 4px; }
+  .level { display: flex; gap: 14px; margin-top: 16px; align-items: stretch; }
+  .board { position: relative; display: grid; grid-template-columns: repeat(3, var(--tile)); grid-template-rows: repeat(3, var(--tile)); border: 3px solid var(--ink); border-radius: 16px; overflow: hidden; flex: none; }
+  .board.bump { animation: bump .35s ease; }
+  .t { background: #eaf6e4; border: 1.5px solid #cfe6c8; }
+  .t:nth-child(even) { background: #f3faef; }
+  .t.goal { background: #ffe3bf; border-color: #f6c489; }
+  .sprite { position: absolute; top: 0; left: 0; width: var(--tile); height: var(--tile); display: grid; place-items: center; transition: transform .42s var(--bounce); }
+  .sprite img { width: 70%; }
+  .gift { transform: translate(calc(var(--tile) * 2), calc(var(--tile) * 2)); }
+  .gift img { width: 58%; animation: wiggle 2s ease-in-out infinite; }
+  .hero-bear { z-index: 2; }
+  .dir { position: absolute; inset: 0; transition: transform .3s ease; }
+  .dir::after { content: ""; position: absolute; right: 2px; top: 50%; margin-top: -8px; border: 8px solid transparent; border-left: 12px solid var(--axo); }
+  .prog { flex: 1; min-width: 0; background: var(--paper); border: 3px solid var(--ink); border-radius: 16px; padding: 10px 12px; font: 700 15px var(--mono); list-style: none; margin: 0; counter-reset: s; display: flex; flex-direction: column; gap: 2px; overflow: auto; max-height: calc(var(--tile) * 3 + 6px); }
+  .prog li { counter-increment: s; display: flex; gap: 8px; padding: 2px 4px; border-radius: 6px; }
+  .prog li::before { content: counter(s) "."; color: #6b6590; min-width: 1.4em; }
+  .prog li.now { background: var(--sun); }
+  .prog .empty { color: #6b6590; font: 500 14px var(--body); }
+  .prog .empty::before { content: none; }
+  .typer { display: flex; gap: 10px; margin-top: 14px; }
+  .typer input { flex: 1; min-width: 0; min-height: 52px; border: 3px solid var(--ink); border-radius: 14px; padding: 0 14px; font: 700 17px var(--mono); color: var(--ink); background: var(--white); }
+  .typer input::placeholder { color: #6b6590; font-weight: 500; }
+  .add { min-width: 56px; min-height: 52px; border: 3px solid var(--ink); border-radius: 14px; background: var(--mint); box-shadow: var(--block); cursor: pointer; display: grid; place-items: center; }
+  .add:active { transform: translate(4px,4px); box-shadow: none; }
+  .add svg { width: 24px; height: 24px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip { font: 700 15px var(--mono); min-height: 44px; padding: 0 14px; border: 2.5px solid var(--ink); border-radius: 999px; background: var(--white); color: var(--ink); cursor: pointer; transition: transform .15s var(--bounce), background .15s; }
+  .chip:hover { background: var(--sun); transform: translateY(-2px) rotate(-2deg); }
+  .run-row { display: flex; gap: 10px; margin-top: 14px; }
+  .run-row .go { flex: 1; }
+  .run-row .clear { background: #d9d2f5; min-width: 56px; padding: 0; }
+  .say { min-height: 1.5em; margin-top: 10px; font-weight: 700; font-size: 15px; }
+  .say.win { color: #1d7a4f; } .say.oops { color: #b3361b; }
+  .confetti { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+  .confetti i { position: absolute; left: 50%; top: 40%; width: 10px; height: 10px; background: var(--c); border: 2px solid var(--ink); border-radius: 2px; animation: burst 1.1s ease-out forwards; }
+
+  /* ---------- word marquee ---------- */
+  .marquee { background: var(--sun); border-block: 3px solid var(--ink); overflow: hidden; padding-block: 16px; }
+  .marquee-track { display: flex; width: max-content; animation: slide 28s linear infinite; }
+  .marquee-track span { font: 700 clamp(22px, 4vw, 34px) var(--mono); white-space: nowrap; padding-inline: 18px; display: inline-flex; align-items: baseline; gap: 12px; }
+  .marquee-track small { font: 500 16px var(--body); color: var(--ink-soft); }
+  .marquee-track b { color: var(--axo); font-weight: 700; }
+  html[lang="en"] .marquee-track small { display: none; }
+
+  /* ---------- section frame ---------- */
+  section.band { padding-block: 80px; }
+  .head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 760px; }
+  .head h2 { font-size: clamp(30px, 5.6vw, 52px); font-weight: 900; }
+  .head p { font-size: 18px; color: var(--ink-soft); max-width: 52ch; }
+  .head .eyebrow { color: var(--night-2); }
+  .band--method { padding-top: 0; }
+  .guide-link-wrap { margin: 36px 0 0; display: flex; justify-content: center; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .reveal.in { animation: rise .8s var(--bounce) both; }
+
+  /* ---------- lesson steps ---------- */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { background: var(--c); border: 3px solid var(--ink); border-radius: 28px; box-shadow: var(--block-lg); padding: 22px 22px 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden; transition: transform .25s var(--bounce); }
+  .step:hover { transform: rotate(var(--r)) translateY(-6px); }
+  .step:nth-child(1) { --c: var(--sky); --r: -1.5deg; }
+  .step:nth-child(2) { --c: var(--pink); --r: 1.5deg; }
+  .step:nth-child(3) { --c: var(--mint); --r: -1.5deg; }
+  .step-top { display: flex; align-items: center; gap: 12px; }
+  .num { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: var(--white); border: 3px solid var(--ink); border-radius: 12px; font: 900 20px var(--display); }
+  .step h3 { font-size: 24px; font-weight: 800; }
+  .step p { font-size: 16px; }
+  .pill { font: 700 15px var(--mono); background: var(--white); border: 2.5px solid var(--ink); border-radius: 10px; padding: 3px 10px; align-self: flex-start; }
+  .phone { margin-top: auto; margin-inline: 10px; border: 3px solid var(--ink); border-bottom: 0; border-radius: 24px 24px 0 0; background: var(--ink); padding: 8px 8px 0; box-shadow: 0 -2px 0 rgba(255,255,255,.4) inset; transform: translateY(16px); transition: transform .35s var(--bounce); }
+  .step:hover .phone { transform: translateY(0); }
+  .phone img { border-radius: 16px 16px 0 0; aspect-ratio: 4 / 3.6; object-fit: cover; object-position: top; width: 100%; height: auto; }
+
+  /* ---------- world: friends + zones ---------- */
+  .world { background: var(--night); color: var(--on-night); border-block: 3px solid var(--ink); position: relative; overflow: hidden; isolation: isolate; }
+  .world .head h2 { color: var(--white); }
+  .world .head p { color: var(--on-night-soft); }
+  .world .head .eyebrow { color: var(--sun); }
+  .world-grid { display: grid; gap: 32px; align-items: start; }
+  @media (min-width: 900px) { .world-grid { grid-template-columns: 1fr 1.3fr; } }
+  .friends { background: var(--white); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 10px 10px 0 var(--ink); padding: 16px; transform: rotate(-2deg); }
+  .friends { margin: 0; }
+  .friends img { border-radius: 16px; width: 100%; height: auto; }
+  .friends figcaption { color: var(--ink); font: 800 16px var(--display); text-align: center; padding-top: 12px; }
+  .zones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .zone { border: 3px solid var(--ink); border-radius: 22px; padding: 18px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--block-lg); background: var(--zc); color: var(--zt); position: relative; overflow: hidden; transition: transform .25s var(--bounce); }
+  .zone:hover { transform: translateY(-6px) rotate(-1deg); }
+  .zone::after { content: ""; position: absolute; right: -14px; bottom: -14px; width: 70px; height: 70px; border-radius: 14px; border: 3px solid currentColor; opacity: .25; transform: rotate(18deg); }
+  .zone b { font: 900 clamp(22px, 3.4vw, 30px) var(--display); }
+  .zone span { font: 700 14px var(--mono); }
+  .zone.z1 { --zc: #f8d98f; --zt: var(--ink); }
+  .zone.z2 { --zc: #6552c4; --zt: #ffffff; }
+  .zone.z3 { --zc: #2f2b66; --zt: #ffffff; }
+  .zone.z4 { --zc: #217a7a; --zt: #ffffff; }
+  .zone-note { grid-column: 1 / -1; color: var(--on-night-soft); font-size: 15px; }
+
+  /* ---------- first steps ---------- */
+  .firsts { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+  @media (min-width: 900px) { .firsts { grid-template-columns: repeat(3, 1fr); } }
+  .first { background: var(--white); border: 3px solid var(--ink); border-radius: 24px; padding: 26px; box-shadow: var(--block-lg); display: grid; gap: 12px; align-content: start; }
+  .first .ico { width: 64px; height: 64px; border: 3px solid var(--ink); border-radius: 16px; display: grid; place-items: center; background: var(--c); transition: transform .4s var(--bounce); }
+  .first:hover .ico { transform: rotate(-10deg) scale(1.08); }
+  .first .ico svg { width: 32px; height: 32px; }
+  .first:nth-child(1) { --c: var(--sun); } .first:nth-child(2) { --c: var(--sky); } .first:nth-child(3) { --c: var(--pink); }
+  .first h3 { font-size: 21px; font-weight: 800; }
+  .first p { color: var(--ink-soft); font-size: 16px; }
+
+  /* ---------- method ---------- */
+  .method { background: var(--white); border: 3px solid var(--ink); border-radius: 28px; padding: 28px; box-shadow: var(--block-lg); display: grid; gap: 14px; }
+  @media (min-width: 900px) { .method { grid-template-columns: auto 1fr; column-gap: 32px; align-items: start; } .method > .badge { grid-row: span 3; } }
+  .badge { font: 900 24px var(--display); background: var(--night); color: var(--sun); border: 3px solid var(--ink); border-radius: 18px; padding: 16px 20px; text-align: center; line-height: 1.1; }
+  .badge small { display: block; font: 700 12px var(--mono); color: var(--on-night-soft); letter-spacing: .1em; margin-top: 6px; }
+  .method h3 { font-size: 24px; font-weight: 800; }
+  .method p { color: var(--ink-soft); max-width: 68ch; }
+  .method details summary { cursor: pointer; font-weight: 700; color: var(--night-2); min-height: 44px; display: flex; align-items: center; }
+  .method details p { margin-top: 6px; font-size: 15px; }
+  .trust { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
+  .trust svg { width: 20px; height: 20px; color: var(--mint); }
+
+  /* ---------- final call ---------- */
+  .final { background: var(--axo); border-top: 3px solid var(--ink); padding-block: 80px 64px; position: relative; overflow: hidden; isolation: isolate; }
+  .final-inner { display: grid; gap: 28px; justify-items: center; text-align: center; }
+  .final img { width: 200px; animation: hop 2.2s var(--bounce) infinite; filter: drop-shadow(0 8px 0 rgba(28,20,66,.35)); }
+  .final h2 { font-size: clamp(32px, 6vw, 58px); font-weight: 900; max-width: 16ch; }
+  .final .hero-ctas { justify-content: center; margin-top: 0; }
+  .channels { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font-weight: 700; }
+  .channels a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+  .channels svg { width: 20px; height: 20px; }
+  .final .sym { opacity: .8; }
+
+  footer { background: var(--ink); color: var(--on-night-soft); padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; justify-content: space-between; }
+  footer p, footer nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; min-height: 44px; margin: 0; }
+  footer a { color: var(--on-night); min-height: 44px; display: inline-flex; align-items: center; }
+
+  @keyframes pop { from { transform: translateY(26px) scale(.92); } to { transform: none; } }
+  @keyframes rise { from { transform: translateY(34px) scale(.97); } to { transform: none; } }
+  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+  @keyframes hop { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-26px) rotate(-4deg); } }
+  @keyframes drift { from { transform: translate(0, 0) rotate(-6deg); } to { transform: translate(18px, -26px) rotate(10deg); } }
+  @keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg) scale(1.05); } 50% { transform: rotate(6deg); } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  @keyframes bump { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
+  @keyframes burst { to { transform: translate(var(--x), var(--y)) rotate(var(--rot)); opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="brand" aria-label="axo">
-        <img src="assets/icons/axo-new.svg" alt="" width="26" height="26">
-        <span>axo</span>
-      </a>
-      <div class="lang-toggle" data-active="ru" role="group" aria-label="Язык / Language">
-        <span class="lang-thumb" aria-hidden="true"></span>
-        <button type="button" class="lang-btn active" data-lang-btn="ru" aria-pressed="true">RU</button>
-        <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="index.html" aria-label="axo"><img src="media/home/axo.png" alt="" width="38" height="34">axo</a>
+    <nav class="nav" aria-label="Разделы" data-i18n-aria="navLabel">
+      <a href="#level" data-i18n="navGame">Игра</a>
+      <a href="help.html" class="help-link" data-i18n="navHelp">Как играть</a>
+    </nav>
+    <div class="lang lang-toggle" role="group" aria-label="Язык / Language">
+      <button type="button" data-lang-btn="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="sym c1" aria-hidden="true">{ }</span><span class="sym c2" aria-hidden="true">;</span><span class="sym c3" aria-hidden="true">&lt;/&gt;</span><span class="sym c4" aria-hidden="true">→</span><span class="sym c5" aria-hidden="true">( )</span>
+    <div class="wrap hero-grid">
+      <div class="hero-head">
+        <p class="eyebrow pop pop-1"><span data-i18n="eyeAge">5–9 лет</span><span data-i18n="eyeFree">игра бесплатная</span><span>Telegram</span><span data-i18n="eyeBrowser">браузер</span></p>
+        <h1 class="pop pop-2"><span data-i18n="headA">Английский через</span> <span class="code-word" data-i18n="headB">программирование</span></h1>
+      </div>
+      <div class="hero-copy">
+        <p class="hero-lede pop pop-3" data-i18n="subtitle">Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.</p>
+        <div class="hero-ctas pop pop-4">
+          <a class="btn btn--axo" href="https://t.me/axocoder_bot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+            <span data-i18n="ctaTelegram">Играть в Telegram</span>
+          </a>
+          <a class="btn btn--sun" href="https://play.axolab.space">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            <span data-i18n="ctaBrowser">Играть в браузере</span>
+          </a>
+        </div>
+        <p class="hero-note pop pop-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg><span data-i18n="heroNote">Инструкции, анонсы – на канале</span> <a class="channel-link" href="https://t.me/axo_lab" data-i18n="channelName">AXO Lab</a></p>
+        <div class="langs pop pop-5">
+          <p class="langs-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg><span data-i18n="langsTitle">Подсказки на 10 языках</span></p>
+          <p class="langs-sub" data-i18n="langsSub">Язык игры – всегда английский.</p>
+          <ul class="langs-list" data-only="ru">
+            <li lang="ky">Кыргызча</li><li lang="kk">Қазақша</li><li lang="uz">Oʻzbekcha</li><li lang="ru">Русский</li><li lang="uk">Українська</li><li lang="es">Español</li><li lang="zh">中文</li><li lang="de">Deutsch</li><li lang="fr">Français</li><li lang="it">Italiano</li><li class="growing" data-i18n="langsMore">Список пополняется</li>
+          </ul>
+          <ul class="langs-list" data-only="en" hidden>
+            <li lang="es">Español</li><li lang="fr">Français</li><li lang="de">Deutsch</li><li lang="it">Italiano</li><li lang="zh">中文</li><li lang="ky">Кыргызча</li><li lang="kk">Қазақша</li><li lang="uz">Oʻzbekcha</li><li lang="ru">Русский</li><li lang="uk">Українська</li><li class="growing" data-i18n="langsMore">Список пополняется</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="play pop pop-3" id="level">
+        <img class="play-axo" src="media/home/axo.png" data-i18n-alt="mascotAlt" alt="Аксолотль axo, герой приложения" width="150" height="132" fetchpriority="high">
+        <p class="bubble" aria-hidden="true" data-i18n="bubble">Попробуй!</p>
+        <h2 data-i18n="playTitle">Уровень прямо здесь</h2>
+        <p class="play-hint" data-i18n="playHint">Собери команды и доведи медвежонка до подарка.</p>
+        <div class="level">
+          <div class="board" id="board" role="img" data-i18n-aria="boardAria" aria-label="Поле 3 на 3: медвежонок в левом верхнем углу, подарок в правом нижнем">
+            <span class="t"></span><span class="t"></span><span class="t"></span>
+            <span class="t"></span><span class="t"></span><span class="t"></span>
+            <span class="t"></span><span class="t"></span><span class="t goal"></span>
+            <span class="sprite gift"><img src="media/home/gift.png" alt=""></span>
+            <span class="sprite hero-bear" id="bear"><span class="dir" id="dir"></span><img src="media/home/bear.png" alt=""></span>
+          </div>
+          <ol class="prog" id="prog" aria-live="polite"></ol>
+        </div>
+        <form class="typer" id="typer" autocomplete="off">
+          <label for="cmd" class="visually-hidden" data-i18n="cmdLabel">Команда по-английски</label>
+          <input id="cmd" name="cmd" placeholder="type a word…" spellcheck="false" autocapitalize="off">
+          <button class="add" type="submit" data-i18n-aria="addAria" aria-label="Добавить команду"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        </form>
+        <div class="chips">
+          <button class="chip" type="button" data-cmd="go">go</button>
+          <button class="chip" type="button" data-cmd="turn-left">turn-left</button>
+          <button class="chip" type="button" data-cmd="turn-right">turn-right</button>
+        </div>
+        <div class="run-row">
+          <button class="btn btn--white clear" type="button" id="clear" data-i18n-aria="clearAria" aria-label="Стереть программу"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+          <button class="btn btn--axo go" type="button" id="run"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>Go!</button>
+        </div>
+        <p class="say" id="say" aria-live="polite"></p>
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero container">
-      <p class="kicker" data-i18n="kicker">Telegram · браузер</p>
-      <h1 data-i18n="heading">Английский через программирование</h1>
-      <p class="hero-para" data-i18n="subtitle">Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.</p>
-      <div class="hero-cta">
-        <div class="cta-row">
-          <a class="cta" href="https://t.me/axocoder_bot">
-            <span data-i18n="ctaTelegram">Играть в Telegram</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
-          </a>
-          <a class="cta" href="https://play.axolab.space">
-            <span data-i18n="ctaBrowser">Играть в браузере</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-          </a>
-        </div>
-        <p class="cta-note" data-i18n="heroCtaNote">Бесплатно, в Telegram или в любом браузере. На канале – инструкции и ответы на вопросы.</p>
-        <a class="hero-channel channel-link" href="https://t.me/axo_lab" data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</a>
-      </div>
-      <ol class="card-grid card-grid--intro">
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">1</span>
-          <p class="value-title" data-i18n="card1t">Один сквозной процесс</p>
-          <p class="value-desc" data-i18n="card1d">Слова и команды кода учатся вместе, а не по отдельности.</p>
-        </li>
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">2</span>
-          <p class="value-title" data-i18n="card2t">Интегрированный подход</p>
-          <p class="value-desc" data-i18n="card2d">Первые английские слова через алгоритмическое мышление – редкое сочетание в детском образовании.</p>
-        </li>
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">3</span>
-          <p class="value-title" data-i18n="card3t">Спокойная игра</p>
-          <p class="value-desc" data-i18n="card3d">Ребёнок сам ведёт героя, без давления и таймеров.</p>
-        </li>
-      </ol>
-      <div class="hero-venn">
-        <svg viewBox="0 0 320 200" role="img" aria-labelledby="vennTitle">
-          <title id="vennTitle" data-i18n="chartAlt">Диаграмма Венна: на пересечении кругов «Кодинг» и «Английский» находится axo.</title>
-          <rect x="0" y="0" width="320" height="200" rx="16" fill="var(--neutral-100)"/>
-          <circle cx="118" cy="100" r="62" fill="#E07A3E" fill-opacity="0.3" stroke="#E07A3E" stroke-width="2"/>
-          <circle cx="202" cy="100" r="62" fill="#CCDBB2" fill-opacity="0.5" stroke="#8BA86A" stroke-width="2"/>
-          <text class="venn-label" x="96" y="105" text-anchor="middle" data-i18n="vennCoding">Кодинг</text>
-          <text class="venn-label" x="222" y="105" text-anchor="middle" data-i18n="vennEnglish">Английский</text>
-        </svg>
-        <span class="venn-axo" aria-hidden="true">axo</span>
-      </div>
-      <h2 class="future-heading reveal" data-i18n="fut_heading">Три первых шага в большой мир:</h2>
-      <ol class="card-grid card-grid--future reveal">
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">1</span>
-          <p class="value-title" data-i18n="fut1t">Первое знакомство с английским</p>
-          <p class="value-desc" data-i18n="fut1d">От букв и звуков к первым словам. Каждое слово – инструмент: им ребёнок помогает герою пройти испытание.</p>
-        </li>
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">2</span>
-          <p class="value-title" data-i18n="fut2t">Первые шаги в логике кода</p>
-          <p class="value-desc" data-i18n="fut2d">Простые команды и порядок действий – ребёнок пробует мыслить шагами, играя.</p>
-        </li>
-        <li class="value-card">
-          <span class="value-num" aria-hidden="true">3</span>
-          <p class="value-title" data-i18n="fut3t">Взгляд, полезный в эпоху ИИ</p>
-          <p class="value-desc" data-i18n="fut3d">Вводный уровень programming mindset – привычка видеть в задаче последовательность действий.</p>
-        </li>
-      </ol>
-      <div class="cta-row">
-        <a class="cta" href="https://t.me/axocoder_bot">
-          <span data-i18n="cta">Играть бесплатно</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
-        </a>
-        <a class="cta cta--ghost channel-link" href="https://t.me/axo_lab">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span data-i18n="ctaGroup">Присоединяйтесь к AXO Lab</span>
-        </a>
-      </div>
-      <p class="cta-note" data-i18n="ctaNote">«Играть бесплатно» откроет бота AXO, «Присоединяйтесь к AXO Lab» – наш канал в Telegram.</p>
-      <p class="trust" data-i18n="trust">Уроки пишет сертифицированный преподаватель</p>
-    </section>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span><b>go</b> <small>иди</small></span><span><b>jump</b> <small>прыгай</small></span><span><b>turn-left</b> <small>налево</small></span><span><b>turn-right</b> <small>направо</small></span><span><b>pick-up</b> <small>возьми</small></span><span><b>drop</b> <small>положи</small></span>
+      <span><b>go</b> <small>иди</small></span><span><b>jump</b> <small>прыгай</small></span><span><b>turn-left</b> <small>налево</small></span><span><b>turn-right</b> <small>направо</small></span><span><b>pick-up</b> <small>возьми</small></span><span><b>drop</b> <small>положи</small></span>
+    </div>
+  </div>
 
-    <section class="mascot-zone container">
-      <div class="mascot-stage">
-        <div class="mascot-circle"></div>
-        <span class="pixel pixel-1" aria-hidden="true"></span>
-        <span class="pixel pixel-2" aria-hidden="true"></span>
-        <span class="pixel pixel-3" aria-hidden="true"></span>
-        <div class="mascot-drop">
-          <div class="mascot-float">
-            <img src="assets/icons/axo-new.svg" data-i18n-alt="mascotAlt" alt="Аксолотль Axo, герой приложения axo" fetchpriority="high">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="lesson container">
-      <div class="lesson-card reveal">
+  <section class="band" id="lesson">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow" data-i18n="lessonEyebrow">Три шага</p>
         <h2 data-i18n="howTitle">Как проходит урок</h2>
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step-num" aria-hidden="true">1</span>
-            <h3 data-i18n="s1t">Смотри</h3>
-            <p data-i18n="s1d">Герой показывает слово и его значение через движение — прямо как в игре.</p>
-          </li>
-          <li class="step reveal">
-            <span class="connector-wrap" aria-hidden="true"><span class="connector"></span></span>
-            <span class="step-num" aria-hidden="true">2</span>
-            <h3 data-i18n="s2t">Пиши команду</h3>
-            <p data-i18n="s2d">Ребёнок печатает её сам, по-английски:</p>
-            <code class="code-pill" data-i18n="pill">jump – «прыгай»</code>
-          </li>
-          <li class="step reveal">
-            <span class="connector-wrap" aria-hidden="true"><span class="connector"></span></span>
-            <span class="step-num" aria-hidden="true">3</span>
-            <h3 data-i18n="s3t">Действуй</h3>
-            <p data-i18n="s3d">Герой выполняет команду и продвигается по уровню - слово усваивается через действие, а не заучивание.</p>
-          </li>
-        </ol>
-        <p class="guide-link-wrap reveal"><a class="guide-link" href="help.html" data-i18n="guideLink">Посмотреть все экраны игры →</a></p>
-        <p class="tpr-note reveal" data-i18n="tpr">В основе образовательного контента лежит авторская методика CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; ранее — ILLA), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).</p>
-        <div class="cta-row lesson-cta reveal">
-          <a class="cta" href="https://t.me/axocoder_bot">
-            <span data-i18n="cta">Играть бесплатно</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
-          </a>
-        </div>
+        <p data-i18n="lessonLede">Слово нужно, чтобы герой прошёл испытание. Поэтому оно и запоминается.</p>
       </div>
-    </section>
-  </main>
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step-top"><span class="num" aria-hidden="true">1</span><h3 data-i18n="s1t">Смотри</h3></div>
+          <p data-i18n="s1d">Герой показывает слово и его значение через движение – прямо как в игре.</p>
+          <div class="phone"><img src="media/home/shot-learn.jpg" data-i18n-alt="shot1Alt" alt="Экран игры: слово go, буквы g и o, медвежонок на клетке" loading="lazy" width="410" height="490"></div>
+        </li>
+        <li class="step reveal">
+          <div class="step-top"><span class="num" aria-hidden="true">2</span><h3 data-i18n="s2t">Пиши команду</h3></div>
+          <p data-i18n="s2d">Ребёнок печатает её сам, по-английски:</p>
+          <code class="pill" data-i18n="pill">jump – «прыгай»</code>
+          <div class="phone"><img src="media/home/shot-challenge.jpg" data-i18n-alt="shot2Alt" alt="Экран испытания: поле, программа go, go и поле ввода" loading="lazy" width="568" height="650"></div>
+        </li>
+        <li class="step reveal">
+          <div class="step-top"><span class="num" aria-hidden="true">3</span><h3 data-i18n="s3t">Действуй</h3></div>
+          <p data-i18n="s3d">Герой выполняет команду и продвигается по уровню – слово усваивается через действие, а не заучивание.</p>
+          <div class="phone"><img src="media/home/shot-map.jpg" data-i18n-alt="shot3Alt" alt="Карта уровней: острова Start, Flow, Prime и GOAT" loading="lazy" width="560" height="605"></div>
+        </li>
+      </ol>
+      <p class="guide-link-wrap reveal"><a class="btn btn--white guide-link" href="help.html"><span data-i18n="guideLink">Посмотреть все экраны игры</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <p>© 2026 Arina Bolotbekova · <a href="help.html" class="footer-help">Как играть</a> · <a href="privacy.html" class="footer-privacy">Конфиденциальность</a> · <a href="terms.html" class="footer-terms">Условия</a></p>
-  </footer>
+  <section class="band world">
+    <span class="sym c1" aria-hidden="true">{ }</span><span class="sym c3" aria-hidden="true">&lt;/&gt;</span><span class="sym c4" aria-hidden="true">→</span>
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow" data-i18n="worldEyebrow">Мир axo</p>
+        <h2 data-i18n="worldTitle">Выбери друга – и в путь</h2>
+        <p data-i18n="worldLede">Герой идёт по четырём островам. На каждом – новые слова и новые команды.</p>
+      </div>
+      <div class="world-grid">
+        <figure class="friends reveal">
+          <img src="media/home/shot-friends.jpg" data-i18n-alt="friendsAlt" alt="Экран выбора героя: медвежонок, хомяк, зайчик" loading="lazy" width="420" height="330">
+          <figcaption>Pick your friend!</figcaption>
+        </figure>
+        <ul class="zones">
+          <li class="zone z1 reveal"><b>Start</b><span data-i18n="z1">уровни 1–10</span></li>
+          <li class="zone z2 reveal"><b>Flow</b><span data-i18n="z2">уровни 11–20</span></li>
+          <li class="zone z3 reveal"><b>Prime</b><span data-i18n="z3">уровни 21–30</span></li>
+          <li class="zone z4 reveal"><b>GOAT</b><span data-i18n="z4">уровни 31–40</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    const i18n = {
-      ru: {
-        title: 'axo – Английский через программирование',
-        kicker: 'Telegram · браузер',
-        heading: 'Английский через программирование',
-        subtitle: 'Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.',
-        ctaGroup: 'Присоединяйтесь к AXO Lab',
-        heroCtaNote: 'Бесплатно, в Telegram или в любом браузере. На канале – инструкции и ответы на вопросы.',
-        ctaTelegram: 'Играть в Telegram',
-        ctaBrowser: 'Играть в браузере',
-        card1t: 'Один сквозной процесс',
-        card1d: 'Слова и команды кода учатся вместе, а не по отдельности.',
-        card2t: 'Интегрированный подход',
-        card2d: 'Первые английские слова через алгоритмическое мышление – редкое сочетание в детском образовании.',
-        card3t: 'Спокойная игра',
-        card3d: 'Ребёнок сам ведёт героя, без давления и таймеров.',
-        fut_heading: 'Три первых шага в большой мир:',
-        fut1t: 'Первое знакомство с английским',
-        fut1d: 'От букв и звуков к первым словам. Каждое слово – инструмент: им ребёнок помогает герою пройти испытание.',
-        fut2t: 'Первые шаги в логике кода',
-        fut2d: 'Простые команды и порядок действий – ребёнок пробует мыслить шагами, играя.',
-        fut3t: 'Взгляд, полезный в эпоху ИИ',
-        fut3d: 'Вводный уровень programming mindset – привычка видеть в задаче последовательность действий.',
-        vennCoding: 'Кодинг',
-        vennEnglish: 'Английский',
-        chartAlt: 'Диаграмма Венна: на пересечении кругов «Кодинг» и «Английский» находится axo.',
-        cta: 'Играть бесплатно',
-        ctaNote: '«Играть бесплатно» откроет бота AXO, «Присоединяйтесь к AXO Lab» – наш канал в Telegram.',
-        trust: 'Уроки пишет сертифицированный преподаватель',
-        howTitle: 'Как проходит урок',
-        s1t: 'Смотри',
-        s1d: 'Герой показывает слово и его значение через движение — прямо как в игре.',
-        s2t: 'Пиши команду',
-        s2d: 'Ребёнок печатает её сам, по-английски:',
-        pill: 'jump – «прыгай»',
-        s3t: 'Действуй',
-        s3d: 'Герой выполняет команду и продвигается по уровню - слово усваивается через действие, а не заучивание.',
-        guideLink: 'Посмотреть все экраны игры →',
-        tpr: 'В основе образовательного контента лежит авторская методика CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; ранее — ILLA), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).',
-        mascotAlt: 'Аксолотль Axo, герой приложения axo'
-      },
-      en: {
-        title: 'axo – English through coding',
-        kicker: 'Telegram · Browser',
-        heading: 'English through coding',
-        subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
-        ctaGroup: 'Join AXO Global',
-        heroCtaNote: 'Free, in Telegram or any browser. The channel has instructions and answers.',
-        ctaTelegram: 'Play in Telegram',
-        ctaBrowser: 'Play in browser',
-        card1t: 'One continuous process',
-        card1d: 'Words and code commands are learned together, not separately.',
-        card2t: 'An integrated approach',
-        card2d: 'First English words through algorithmic thinking – a rare combination in children’s education.',
-        card3t: 'A calm game',
-        card3d: 'The child leads the hero at their own pace, no pressure, no timers.',
-        fut_heading: 'Three first steps into a bigger world:',
-        fut1t: 'First contact with English',
-        fut1d: 'From letters and sounds to first words. Every word is a tool – the child uses it to help the hero through a challenge.',
-        fut2t: 'First steps into code logic',
-        fut2d: 'Simple commands and order of actions – the child tries thinking in steps, through play.',
-        fut3t: 'A way of thinking for the AI era',
-        fut3d: 'An introductory level of programming mindset – the habit of seeing a task as a sequence of steps.',
-        vennCoding: 'Coding',
-        vennEnglish: 'English',
-        chartAlt: 'Venn diagram: axo sits at the overlap of the Coding and English circles.',
-        cta: 'Play for free',
-        ctaNote: 'Play for free opens the AXO bot; Join AXO Global opens our English channel on Telegram.',
-        trust: 'Lessons by a certified instructor',
-        howTitle: 'How a lesson works',
-        s1t: 'Watch',
-        s1d: 'The hero shows a word and its meaning through movement, like a game.',
-        s2t: 'Type a command',
-        s2d: 'The child types it themselves, in English:',
-        pill: 'jump – "jump"',
-        s3t: 'Act',
-        s3d: 'The hero performs the command and moves through the level – the word sinks in through action, not memorisation.',
-        guideLink: 'See every screen of the game →',
-        tpr: 'The educational content is based on CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; formerly ILLA), an original methodology developed by Arina Bolotbekova. It combines Total Physical Response (TPR, James Asher), Task-Based Language Learning (TBLL) and Digital Game-Based Language Learning (DGBLL).',
-        mascotAlt: 'Axo the axolotl, hero of the axo app'
+  <section class="band">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow" data-i18n="futEyebrow">Для детей 5–9 лет</p>
+        <h2 data-i18n="fut_heading">Три первых шага в большой мир</h2>
+      </div>
+      <ul class="firsts">
+        <li class="first reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2"/><path d="M9 9h5"/></svg></span>
+          <h3 data-i18n="fut1t">Первое знакомство с английским</h3>
+          <p data-i18n="fut1d">От букв и звуков к первым словам. Каждое слово – инструмент: им ребёнок помогает герою пройти испытание.</p>
+        </li>
+        <li class="first reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+          <h3 data-i18n="fut2t">Первые шаги в логике кода</h3>
+          <p data-i18n="fut2d">Простые команды и порядок действий – ребёнок пробует мыслить шагами, играя.</p>
+        </li>
+        <li class="first reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V4M9 12h.01M15 12h.01M9 16h6"/></svg></span>
+          <h3 data-i18n="fut3t">Взгляд, полезный в эпоху ИИ</h3>
+          <p data-i18n="fut3d">Вводный уровень programming mindset – привычка видеть в задаче последовательность действий.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--method">
+    <div class="wrap">
+      <div class="method reveal">
+        <div class="badge">CT-DGBLL<small data-i18n="badgeSmall">авторская методика</small></div>
+        <h3 data-i18n="methodTitle">В основе – авторская методика</h3>
+        <p data-i18n="methodShort">CT-DGBLL, разработанная Ариной Болотбековой, соединяет изучение языка, игру и вычислительное мышление.</p>
+        <details>
+          <summary data-i18n="methodMore">Подробнее о методике</summary>
+          <p data-i18n="tpr">В основе образовательного контента лежит авторская методика CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; ранее – ILLA), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).</p>
+        </details>
+        <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust">Уроки пишет сертифицированный преподаватель</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <span class="sym c1" aria-hidden="true" style="--c: var(--sun)">{ }</span><span class="sym c3" aria-hidden="true" style="--c: var(--pink)">&lt;/&gt;</span><span class="sym c4" aria-hidden="true" style="--c: var(--sky)">→</span>
+    <div class="wrap final-inner">
+      <img src="media/home/axo.png" alt="" width="200" height="176" loading="lazy">
+      <h2 data-i18n="finalTitle">Первый уровень ждёт</h2>
+      <div class="hero-ctas">
+        <a class="btn btn--white" href="https://t.me/axocoder_bot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+          <span data-i18n="ctaTelegram">Играть в Telegram</span>
+        </a>
+        <a class="btn btn--sun" href="https://play.axolab.space">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <span data-i18n="ctaBrowser">Играть в браузере</span>
+        </a>
+      </div>
+      <div class="channels">
+        <a href="https://t.me/axo_lab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="labLink">AXO Lab – канал на русском</span></a>
+        <a href="https://t.me/axoglobal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg><span data-i18n="globalLink">AXO Global – на английском</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Arina Bolotbekova · <span class="email">hello@axolab.space</span></p>
+    <nav aria-label="Документы" data-i18n-aria="docsLabel"><a href="help.html" class="help-link" data-i18n="navHelp">Как играть</a><a href="privacy.html" data-i18n="privacy">Конфиденциальность</a><a href="terms.html" data-i18n="terms">Условия</a></nav>
+  </div>
+</footer>
+
+<script>
+  const i18n = {
+    ru: {
+      title: 'axo – Английский через программирование',
+      navLabel: 'Разделы', docsLabel: 'Документы',
+      navGame: 'Игра', navHelp: 'Как играть', privacy: 'Конфиденциальность', terms: 'Условия',
+      eyeAge: '5–9 лет', eyeFree: 'игра бесплатная', eyeBrowser: 'браузер',
+      headA: 'Английский через', headB: 'программирование',
+      subtitle: 'Новый подход к обучению – лингвистика и логика программирования в одном игровом процессе.',
+      ctaTelegram: 'Играть в Telegram', ctaBrowser: 'Играть в браузере',
+      heroNote: 'Инструкции, анонсы – на канале', channelName: 'AXO Lab',
+      langsTitle: 'Подсказки на 10 языках', langsSub: 'Язык игры – всегда английский.', langsMore: 'Список пополняется',
+      mascotAlt: 'Аксолотль axo, герой приложения',
+      bubble: 'Попробуй!', playTitle: 'Уровень прямо здесь',
+      playHint: 'Собери команды и доведи медвежонка до подарка.',
+      boardAria: 'Поле 3 на 3: медвежонок в левом верхнем углу, подарок в правом нижнем',
+      cmdLabel: 'Команда по-английски', addAria: 'Добавить команду', clearAria: 'Стереть программу',
+      progEmpty: 'Здесь появится программа',
+      sayFull: 'Хватит – жми Go!', sayUnknown: 'Попробуй: go, turn-left или turn-right',
+      sayEmpty: 'Сначала добавь команду', sayWall: 'Ой, там стена! Поправь программу.',
+      sayWin: 'Ура! Подарок найден!', sayAlmost: 'Почти! Подарок в правом нижнем углу.',
+      lessonEyebrow: 'Три шага', howTitle: 'Как проходит урок',
+      lessonLede: 'Слово нужно, чтобы герой прошёл испытание. Поэтому оно и запоминается.',
+      s1t: 'Смотри', s1d: 'Герой показывает слово и его значение через движение – прямо как в игре.',
+      s2t: 'Пиши команду', s2d: 'Ребёнок печатает её сам, по-английски:', pill: 'jump – «прыгай»',
+      s3t: 'Действуй', s3d: 'Герой выполняет команду и продвигается по уровню – слово усваивается через действие, а не заучивание.',
+      shot1Alt: 'Экран игры: слово go, буквы g и o, медвежонок на клетке',
+      shot2Alt: 'Экран испытания: поле, программа go, go и поле ввода',
+      shot3Alt: 'Карта уровней: острова Start, Flow, Prime и GOAT',
+      guideLink: 'Посмотреть все экраны игры',
+      worldEyebrow: 'Мир axo', worldTitle: 'Выбери друга – и в путь',
+      worldLede: 'Герой идёт по четырём островам. На каждом – новые слова и новые команды.',
+      friendsAlt: 'Экран выбора героя: медвежонок, хомяк, зайчик',
+      z1: 'уровни 1–10', z2: 'уровни 11–20', z3: 'уровни 21–30', z4: 'уровни 31–40',
+      futEyebrow: 'Для детей 5–9 лет', fut_heading: 'Три первых шага в большой мир',
+      fut1t: 'Первое знакомство с английским',
+      fut1d: 'От букв и звуков к первым словам. Каждое слово – инструмент: им ребёнок помогает герою пройти испытание.',
+      fut2t: 'Первые шаги в логике кода',
+      fut2d: 'Простые команды и порядок действий – ребёнок пробует мыслить шагами, играя.',
+      fut3t: 'Взгляд, полезный в эпоху ИИ',
+      fut3d: 'Вводный уровень programming mindset – привычка видеть в задаче последовательность действий.',
+      badgeSmall: 'авторская методика', methodTitle: 'В основе – авторская методика',
+      methodShort: 'CT-DGBLL, разработанная Ариной Болотбековой, соединяет изучение языка, игру и вычислительное мышление.',
+      methodMore: 'Подробнее о методике',
+      tpr: 'В основе образовательного контента лежит авторская методика CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; ранее – ILLA), разработанная Ариной Болотбековой. Подход объединяет метод полного физического реагирования TPR (Total Physical Response Джеймса Ашера), концепцию обучения на основе заданий TBLL (Task-Based Language Learning) и технологии цифрового игрового обучения DGBLL (Digital Game-Based Language Learning).',
+      trust: 'Уроки пишет сертифицированный преподаватель',
+      finalTitle: 'Первый уровень ждёт',
+      labLink: 'AXO Lab – канал на русском', globalLink: 'AXO Global – на английском'
+    },
+    en: {
+      title: 'axo – English through coding',
+      navLabel: 'Sections', docsLabel: 'Documents',
+      navGame: 'Game', navHelp: 'How to play', privacy: 'Privacy', terms: 'Terms',
+      eyeAge: 'Ages 5–9', eyeFree: 'free game', eyeBrowser: 'browser',
+      headA: 'English through', headB: 'coding',
+      subtitle: 'A new approach to learning – linguistics and programming logic in one gameplay experience.',
+      ctaTelegram: 'Play in Telegram', ctaBrowser: 'Play in browser',
+      heroNote: 'Instructions and news – on the channel', channelName: 'AXO Global',
+      langsTitle: 'Hints in 10 languages', langsSub: 'The game itself is always in English.', langsMore: 'More are on the way',
+      mascotAlt: 'Axo the axolotl, hero of the app',
+      bubble: 'Try it!', playTitle: 'Try a level right here',
+      playHint: 'Build the commands and get the bear cub to the gift.',
+      boardAria: 'A 3 by 3 grid: the bear cub in the top-left corner, the gift in the bottom-right',
+      cmdLabel: 'A command in English', addAria: 'Add the command', clearAria: 'Clear the program',
+      progEmpty: 'Your program appears here',
+      sayFull: 'That is plenty – press Go!', sayUnknown: 'Try go, turn-left or turn-right',
+      sayEmpty: 'Add a command first', sayWall: 'Oops, that is a wall! Fix the program.',
+      sayWin: 'Hooray! You found the gift!', sayAlmost: 'Almost! The gift is in the bottom-right corner.',
+      lessonEyebrow: 'Three steps', howTitle: 'How a lesson works',
+      lessonLede: 'The word is what gets the hero through the challenge. That is why it sticks.',
+      s1t: 'Watch', s1d: 'The hero shows a word and its meaning through movement, like a game.',
+      s2t: 'Type a command', s2d: 'The child types it themselves, in English:', pill: 'jump – "jump"',
+      s3t: 'Act', s3d: 'The hero performs the command and moves through the level – the word sinks in through action, not memorisation.',
+      shot1Alt: 'A game screen: the word go, the letters g and o, the bear cub on a tile',
+      shot2Alt: 'A challenge screen: the grid, the program go, go and the input field',
+      shot3Alt: 'The level map: the Start, Flow, Prime and GOAT islands',
+      guideLink: 'See every screen of the game',
+      worldEyebrow: 'The world of axo', worldTitle: 'Pick a friend and set off',
+      worldLede: 'The hero travels across four islands. Each one brings new words and new commands.',
+      friendsAlt: 'The hero picker: bear cub, hamster, bunny',
+      z1: 'levels 1–10', z2: 'levels 11–20', z3: 'levels 21–30', z4: 'levels 31–40',
+      futEyebrow: 'For children aged 5–9', fut_heading: 'Three first steps into a bigger world',
+      fut1t: 'First contact with English',
+      fut1d: 'From letters and sounds to first words. Every word is a tool – the child uses it to help the hero through a challenge.',
+      fut2t: 'First steps into code logic',
+      fut2d: 'Simple commands and order of actions – the child tries thinking in steps, through play.',
+      fut3t: 'A way of thinking for the AI era',
+      fut3d: 'An introductory level of programming mindset – the habit of seeing a task as a sequence of steps.',
+      badgeSmall: 'original methodology', methodTitle: 'Built on an original methodology',
+      methodShort: 'CT-DGBLL, developed by Arina Bolotbekova, brings together language learning, play and computational thinking.',
+      methodMore: 'More about the methodology',
+      tpr: 'The educational content is based on CT-DGBLL (Computational Thinking Digital Game-Based Language Learning; formerly ILLA), an original methodology developed by Arina Bolotbekova. It combines Total Physical Response (TPR, James Asher), Task-Based Language Learning (TBLL) and Digital Game-Based Language Learning (DGBLL).',
+      trust: 'Lessons by a certified instructor',
+      finalTitle: 'The first level is waiting',
+      labLink: 'AXO Lab – in Russian', globalLink: 'AXO Global – in English'
+    }
+  };
+
+  let dict = i18n.ru;
+
+  function setLang(lang) {
+    dict = i18n[lang];
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = dict[el.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = dict[el.dataset.i18nAlt]; });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', dict[el.dataset.i18nAria]); });
+    document.querySelectorAll('[data-only]').forEach(el => { el.hidden = el.dataset.only !== lang; });
+
+    // The community splits by language: Russian readers go to AXO Lab,
+    // everyone else to AXO GLOBAL. Without this an English-speaking parent
+    // lands in a Russian-language channel, which is the exact thing the
+    // global channel was created to avoid.
+    document.querySelectorAll('.channel-link').forEach(a => {
+      a.href = lang === 'ru' ? 'https://t.me/axo_lab' : 'https://t.me/axoglobal';
+    });
+    // Carry the reader's language into the guide page, so an English reader
+    // is not dropped onto the Russian text with a toggle to find.
+    document.querySelectorAll('.help-link, .guide-link').forEach(a => {
+      a.href = 'help.html?lang=' + lang;
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.langBtn === lang));
+    });
+    if (window.axoLevel) window.axoLevel.relabel();
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+  });
+
+  // Language on arrival, in order of authority:
+  //   1. ?lang= - an explicit signal from whoever built the link. The Mini
+  //      App's splash footer sends the language the game is already running
+  //      in, so it has to outrank whatever the phone happens to be set to.
+  //   2. The device language, so a reader anywhere lands on a page they can
+  //      read rather than on Russian with a toggle to hunt for.
+  //   3. Russian, the language these pages are written in first.
+  // Nothing is remembered between visits: this repo keeps localStorage out,
+  // and the toggle sits on every screen anyway.
+  // ky/kk/uz/be map to Russian because those readers are far likelier to
+  // read Russian than English. Ukrainian is deliberately NOT in that list.
+  const RU_LOCALES = ['ru', 'ky', 'kk', 'uz', 'be'];
+
+  function deviceLang() {
+    const tags = (navigator.languages && navigator.languages.length)
+      ? navigator.languages
+      : [navigator.language || ''];
+    for (const tag of tags) {
+      const base = String(tag).toLowerCase().split('-')[0];
+      if (RU_LOCALES.indexOf(base) !== -1) return 'ru';
+      if (base) return 'en';
+    }
+    return 'ru';
+  }
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The playable level in the hero: 3x3, the bear at (0,0) facing right, the
+  // gift at (2,2). Same words as the game's first challenge.
+  window.axoLevel = (() => {
+    const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+    const WORDS = { 'go': 'go', 'turn-left': 'turn-left', 'turn left': 'turn-left', 'turn-right': 'turn-right', 'turn right': 'turn-right' };
+    const bear = document.getElementById('bear'), dirEl = document.getElementById('dir');
+    const prog = document.getElementById('prog'), say = document.getElementById('say');
+    const board = document.getElementById('board'), confetti = document.getElementById('confetti');
+    const cmd = document.getElementById('cmd');
+    let program = [], pos, running = false, lastSay = null;
+
+    const tell = (key, kind) => { lastSay = key ? { key, kind } : null; say.className = 'say' + (kind ? ' ' + kind : ''); say.textContent = key ? dict[key] : ''; };
+    const place = () => {
+      bear.style.transform = `translate(calc(var(--tile) * ${pos.x}), calc(var(--tile) * ${pos.y}))`;
+      dirEl.style.transform = `rotate(${pos.turns * 90}deg)`;
+    };
+    const reset = () => { pos = { x: 0, y: 0, d: 0, turns: 0 }; place(); };
+    const draw = (now = -1) => {
+      prog.textContent = '';
+      if (!program.length) {
+        const li = document.createElement('li'); li.className = 'empty'; li.textContent = dict.progEmpty; prog.appendChild(li); return;
       }
+      program.forEach((w, i) => { const li = document.createElement('li'); li.textContent = w; if (i === now) li.className = 'now'; prog.appendChild(li); });
+    };
+    const add = w => {
+      if (running) return;
+      if (program.length >= 8) { tell('sayFull', 'oops'); return; }
+      program.push(w); tell(null); draw();
+    };
+    const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+    const burst = () => {
+      if (reduce) return;
+      const cols = ['#ffd23f', '#ff7a2f', '#ff78b9', '#3ddc97', '#54c8f5'];
+      for (let i = 0; i < 28; i++) {
+        const p = document.createElement('i');
+        const a = Math.random() * Math.PI * 2, d = 90 + Math.random() * 140;
+        p.style.cssText = `--c:${cols[i % 5]};--x:${Math.cos(a) * d}px;--y:${Math.sin(a) * d - 60}px;--rot:${Math.random() * 540}deg`;
+        confetti.appendChild(p);
+      }
+      setTimeout(() => { confetti.textContent = ''; }, 1200);
     };
 
-    function setLang(lang) {
-      const dict = i18n[lang];
-      document.documentElement.lang = lang;
-      document.title = dict.title;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        el.textContent = dict[el.dataset.i18n];
-      });
-      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-        el.alt = dict[el.dataset.i18nAlt];
-      });
-      const helpLink = document.querySelector('.footer-help');
-      const privacyLink = document.querySelector('.footer-privacy');
-      const termsLink = document.querySelector('.footer-terms');
-      if (helpLink) helpLink.textContent = lang === 'ru' ? 'Как играть' : 'How to play';
-
-      // Carry the reader's language into the guide page, so an English reader
-      // is not dropped onto the Russian text with a toggle to find.
-      // The community splits by language: Russian readers go to AXO Lab,
-      // everyone else to AXO GLOBAL. Without this an English-speaking parent
-      // lands in a Russian-language channel, which is the exact thing the
-      // global channel was created to avoid.
-      document.querySelectorAll('.channel-link').forEach(a => {
-        a.href = lang === 'ru' ? 'https://t.me/axo_lab' : 'https://t.me/axoglobal';
-      });
-
-      document.querySelectorAll('.footer-help, .guide-link').forEach(a => {
-        a.href = 'help.html?lang=' + lang;
-      });
-      if (privacyLink) privacyLink.textContent = lang === 'ru' ? 'Конфиденциальность' : 'Privacy';
-      if (termsLink) termsLink.textContent = lang === 'ru' ? 'Условия' : 'Terms';
-      document.querySelector('.lang-toggle').dataset.active = lang;
-      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-        const active = btn.dataset.langBtn === lang;
-        btn.classList.toggle('active', active);
-        btn.setAttribute('aria-pressed', String(active));
-      });
-    }
-
-    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+    document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => add(b.dataset.cmd)));
+    document.getElementById('typer').addEventListener('submit', e => {
+      e.preventDefault();
+      const w = WORDS[cmd.value.trim().toLowerCase()];
+      if (w) { add(w); cmd.value = ''; }
+      else if (cmd.value.trim()) tell('sayUnknown', 'oops');
     });
-
-    // Language on arrival, in order of authority:
-    //   1. ?lang= - an explicit signal from whoever built the link. The Mini
-    //      App's splash footer sends the language the game is already running
-    //      in, so it has to outrank whatever the phone happens to be set to.
-    //   2. The device language, so a reader anywhere lands on a page they can
-    //      read rather than on Russian with a toggle to hunt for.
-    //   3. Russian, the language these pages are written in first.
-    // Nothing is remembered between visits: this repo keeps localStorage out,
-    // and the toggle sits on every screen anyway.
-    // ky/kk/uz/be map to Russian because those readers are far likelier to
-    // read Russian than English. Ukrainian is deliberately NOT in that list.
-    const RU_LOCALES = ['ru', 'ky', 'kk', 'uz', 'be'];
-
-    function deviceLang() {
-      const tags = (navigator.languages && navigator.languages.length)
-        ? navigator.languages
-        : [navigator.language || ''];
-      for (const tag of tags) {
-        const base = String(tag).toLowerCase().split('-')[0];
-        if (RU_LOCALES.indexOf(base) !== -1) return 'ru';
-        if (base) return 'en';
+    document.getElementById('clear').addEventListener('click', () => { if (running) return; program = []; tell(null); reset(); draw(); });
+    document.getElementById('run').addEventListener('click', async () => {
+      if (running) return;
+      if (!program.length) { tell('sayEmpty', 'oops'); return; }
+      running = true; reset(); tell(null); await wait(250);
+      for (let i = 0; i < program.length; i++) {
+        draw(i);
+        const w = program[i];
+        if (w === 'go') {
+          const [dx, dy] = DIRS[pos.d], nx = pos.x + dx, ny = pos.y + dy;
+          if (nx < 0 || ny < 0 || nx > 2 || ny > 2) {
+            board.classList.remove('bump'); void board.offsetWidth; board.classList.add('bump');
+            tell('sayWall', 'oops'); running = false; return;
+          }
+          pos.x = nx; pos.y = ny;
+        } else if (w === 'turn-right') { pos.d = (pos.d + 1) % 4; pos.turns++; }
+        else { pos.d = (pos.d + 3) % 4; pos.turns--; }
+        place(); await wait(480);
       }
-      return 'ru';
-    }
+      draw();
+      if (pos.x === 2 && pos.y === 2) { tell('sayWin', 'win'); burst(); }
+      else tell('sayAlmost', 'oops');
+      running = false;
+    });
+    reset(); draw();
+    return { relabel: () => { if (!running) draw(); if (lastSay) tell(lastSay.key, lastSay.kind); } };
+  })();
 
-    const requested = new URLSearchParams(location.search).get('lang');
-    setLang(requested === 'ru' || requested === 'en' ? requested : deviceLang());
+  const requested = new URLSearchParams(location.search).get('lang');
+  setLang(requested === 'ru' || requested === 'en' ? requested : deviceLang());
 
+  // Sections rise in from a visible resting state (transform only, never
+  // opacity 0), so nothing is hidden if the observer never fires.
+  if ('IntersectionObserver' in window && !reduce) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
       });
-    }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top > innerHeight) io.observe(el);
+    });
+  }
+</script>
 </body>
 </html>
