@@ -8,7 +8,7 @@ axo is an **introductory stage** — an entry point into English words and comma
 
 ## Live
 
-**https://arinaesp.github.io/axo-landing/**
+**https://axolab.space/**
 
 Deployed via GitHub Pages from `main`. Push to deploy.
 
@@ -68,6 +68,6 @@ axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t
 
 Arina Bolotbekova — developer, methodology creator, and lesson author.
 
-The brand, mascot, lesson content, and methodology belong to the author. Use in classes, links, and screenshots with credit are allowed on the conditions in [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html); anything else needs the author's written consent (§5.6, §6).
+The brand, mascot, lesson content, and methodology belong to the author. Use in classes, links, and screenshots with credit are allowed on the conditions in [Terms of Use §5](https://axolab.space/terms.html); anything else needs the author's written consent (§5.6, §6).
 
 Contact: by email only, [hello@axolab.space](mailto:hello@axolab.space)
