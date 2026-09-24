@@ -14,7 +14,7 @@
 
 In most language games, the words sit beside the gameplay: the child reads or hears them, then presses buttons to play. In axo, **the English word is the move.** Typing `jump` is, at one and the same time, a word in English, an action in the game and an instruction in a program. The child doesn't learn the word first and use it later: using it is how the hero gets through the level.
 
-That is the heart of **CT-DGBLL** (Computational Thinking Digital Game-Based Language Learning), the framework behind axo, created by **Arina Bolotbekova**, an IELTS instructor with nine years of teaching children aged 5–14. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
+That is the heart of **CT-DGBLL** (Computational Thinking Digital Game-Based Language Learning), the framework behind axo, created by **Arina Bolotbekova**, an IELTS & TEFL/TESOL instructor with seven years of teaching children and adults. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
 
 ## How a lesson works
 
