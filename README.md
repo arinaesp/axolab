@@ -60,12 +60,12 @@ axo's approach to teaching English through coding commands was designed by Arina
 
 ## Official channels
 
-The only official axo channels are the Telegram Mini App, the **AXO GLOBAL** channel [t.me/axoglobal](https://t.me/axoglobal) (English), the **AXO Lab** channel [t.me/axo_lab](https://t.me/axo_lab) (Russian), and [@axo_manager](https://t.me/axo_manager). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not initiate private messages asking for payment, and never asks for passwords, Telegram login codes, SMS codes, or card CVV codes. See [Terms of Use §7](https://arinaesp.github.io/axo-landing/terms.html) for details.
+axo is free. The only official sources are the bot [t.me/axocoder_bot](https://t.me/axocoder_bot), which opens the game, and the public channels **AXO GLOBAL** [t.me/axoglobal](https://t.me/axoglobal) (English) and **AXO Lab** [t.me/axo_lab](https://t.me/axo_lab) (Russian). Any other account, channel, or bot acting on behalf of axo is unaffiliated. axo does not answer private messages in Telegram, never asks for payment, and never asks for passwords, Telegram login codes, SMS codes, or card details. See [Terms of Use §2](https://arinaesp.github.io/axo-landing/terms.html) for details.
 
 ## Author and rights
 
 Arina Bolotbekova — developer, methodology creator, and lesson author.
 
-The brand, mascot, lesson content, and methodology are not licensed for reuse — see [Terms of Use §5](https://arinaesp.github.io/axo-landing/terms.html).
+The brand, mascot, lesson content, and methodology are not licensed for reuse — see [Terms of Use §5–6](https://arinaesp.github.io/axo-landing/terms.html).
 
-Contact: [@axo_manager](https://t.me/axo_manager) on Telegram
+Contact: by email only, [axocoder@proton.me](mailto:axocoder@proton.me)
