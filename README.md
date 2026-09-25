@@ -51,6 +51,7 @@ Anyone can use the name "axo", so only these are ours:
 - the bot [t.me/axocoder_bot](https://t.me/axocoder_bot) and [play.axolab.space](https://play.axolab.space)
 - the website [axolab.space](https://axolab.space)
 - the channels [t.me/axoglobal](https://t.me/axoglobal) (English) and [t.me/axo_lab](https://t.me/axo_lab) (Russian)
+- Instagram [@axoglobal.lab](https://www.instagram.com/axoglobal.lab/) (English) and [@axolab.space](https://www.instagram.com/axolab.space/) (Russian)
 - email [hello@axolab.space](mailto:hello@axolab.space)
 
 We don't answer private messages in Telegram, and **the axo app never asks for payment to play**. Anyone who asks you to pay to play is not us.
