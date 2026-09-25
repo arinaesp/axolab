@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you! Hints in **Қазақша, Oʻzbekcha and Українська** are still waiting for a native speaker's check, so these help the most. Every language is welcome.
+        Thank you! Hints in **Қазақша, Ўзбекча and Українська** are still waiting for a native speaker's check, so these help the most. Every language is welcome.
 
         **This page is public.** Please don't post a child's name, face, voice or Telegram username, including in screenshots.
   - type: dropdown
@@ -14,7 +14,7 @@ body:
       label: Language
       options:
         - Қазақша
-        - Oʻzbekcha
+        - Ўзбекча
         - Українська
         - Кыргызча
         - Русский
