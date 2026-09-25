@@ -6,7 +6,7 @@
 
 **English through coding, for children aged 5–9.** A free educational game in which a child learns first English words and the logic of commands at the same time, in one activity rather than two.
 
-**Runs on:** any phone, tablet or computer, in Telegram or any browser. Free, no account, no ads, no purchases.
+**Runs on:** any phone, tablet or computer, in Telegram or any browser. The app is free: no account, no ads, no in-app purchases.
 
 ![The axo world map](https://axolab.space/media/home/shot-map.jpg)
 
