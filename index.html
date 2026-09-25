@@ -222,6 +222,8 @@
   .zone::after { content: ""; position: absolute; right: -14px; bottom: -14px; width: 70px; height: 70px; border-radius: 14px; border: 3px solid currentColor; opacity: .25; transform: rotate(18deg); }
   .zone b { font: 900 clamp(22px, 3.4vw, 30px) var(--display); }
   .zone span { font: 700 14px var(--mono); }
+  /* which islands are playable today; a plain line, not a card, so it never reads as a fifth zone */
+  .zones-note { grid-column: 1 / -1; font: 700 15px var(--body); color: var(--sun); }
   .zone.z1 { --zc: #f8d98f; --zt: var(--ink); }
   .zone.z2 { --zc: #6552c4; --zt: #ffffff; }
   .zone.z3 { --zc: #2f2b66; --zt: #ffffff; }
@@ -421,6 +423,7 @@
           <li class="zone z2 reveal"><b>Flow</b><span data-i18n="z2">уровни 11–20</span></li>
           <li class="zone z3 reveal"><b>Prime</b><span data-i18n="z3">уровни 21–30</span></li>
           <li class="zone z4 reveal"><b>GOAT</b><span data-i18n="z4">уровни 31–40</span></li>
+          <li class="zones-note" data-i18n="zonesOpen">Сейчас открыты Start и Flow: уровни 1–20.</li>
         </ul>
       </div>
     </div>
@@ -530,7 +533,7 @@
       worldEyebrow: 'Мир axo', worldTitle: 'Выбери друга – и в путь',
       worldLede: 'Герой идёт по четырём островам. На каждом – новые слова и новые команды.',
       friendsAlt: 'Экран выбора героя: медвежонок, хомяк, зайчик',
-      z1: 'уровни 1–10', z2: 'уровни 11–20', z3: 'уровни 21–30', z4: 'уровни 31–40',
+      z1: 'уровни 1–10', z2: 'уровни 11–20', z3: 'уровни 21–30', z4: 'уровни 31–40', zonesOpen: 'Сейчас открыты Start и Flow: уровни 1–20.',
       futEyebrow: 'Для детей 5–9 лет', fut_heading: 'Три первых шага в большой мир',
       fut1t: 'Первое знакомство с английским',
       fut1d: 'От букв и звуков к первым словам. Каждое слово – инструмент: им ребёнок помогает герою пройти испытание.',
@@ -577,7 +580,7 @@
       worldEyebrow: 'The world of axo', worldTitle: 'Pick a friend and set off',
       worldLede: 'The hero travels across four islands. Each one brings new words and new commands.',
       friendsAlt: 'The hero picker: bear cub, hamster, bunny',
-      z1: 'levels 1–10', z2: 'levels 11–20', z3: 'levels 21–30', z4: 'levels 31–40',
+      z1: 'levels 1–10', z2: 'levels 11–20', z3: 'levels 21–30', z4: 'levels 31–40', zonesOpen: 'Start and Flow are open now: levels 1–20.',
       futEyebrow: 'For children aged 5–9', fut_heading: 'Three first steps into a bigger world',
       fut1t: 'First contact with English',
       fut1d: 'From letters and sounds to first words. Every word is a tool – the child uses it to help the hero through a challenge.',
