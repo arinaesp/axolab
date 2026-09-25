@@ -109,12 +109,12 @@
   .sym.c4 { --s: 40px; --c: var(--sun); --d: 5s; bottom: 8%; right: 30%; }
   .sym.c5 { --s: 36px; --c: var(--axo); --d: 9s; top: 50%; left: 88%; }
 
-  .langs { margin-top: 28px; display: grid; gap: 10px; background: var(--night-2); border: 3px solid var(--ink); border-radius: 22px; padding: 18px 20px 20px; box-shadow: var(--block-lg); max-width: 520px; }
+  .langs { margin-top: 28px; display: grid; gap: 10px; background: var(--night-2); border: 3px solid var(--ink); border-radius: 22px; padding: 18px clamp(14px, 4vw, 20px) 20px; box-shadow: var(--block-lg); max-width: 520px; }
   .langs-title { display: flex; align-items: center; gap: 10px; font: 800 19px var(--display); color: var(--white); }
   .langs-title svg { width: 24px; height: 24px; color: var(--sun); flex: none; }
   .langs-sub { color: var(--on-night-soft); font-size: 16px; }
   .langs-list { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .langs-list li { text-align: center; white-space: nowrap; font-weight: 700; font-size: 14px; padding: 6px 6px; border: 2px solid var(--on-night-soft); border-radius: 999px; color: var(--white); }
+  .langs-list li { text-align: center; white-space: nowrap; font-weight: 700; font-size: clamp(12px, 3.7vw, 14px); padding: 6px 4px; border: 2px solid var(--on-night-soft); border-radius: 999px; color: var(--white); }
   /* a note, not a chip: no border, so it does not look like a button */
   .langs-list .growing { grid-column: span 2; border: 0; text-align: left; font-weight: 600; font-style: italic; color: var(--sun); padding-inline: 4px; }
 
@@ -143,6 +143,15 @@
   .prog li.now { background: var(--sun); }
   .prog .empty { color: #6b6590; font: 500 14px var(--body); }
   .prog .empty::before { content: none; }
+  /* phones: the board plus the program column need ~420px, wider than the screen. The container
+     stops the card from stretching the hero (which clipped it and the languages card), and below
+     400px the program list moves under the board instead of beside it */
+  .play { container-type: inline-size; }
+  @container (max-width: 400px) {
+    .level { flex-direction: column; }
+    .board { align-self: center; }
+    .prog { flex-direction: row; flex-wrap: wrap; gap: 4px 6px; max-height: none; }
+  }
   .typer { display: flex; gap: 10px; margin-top: 14px; }
   .typer input { flex: 1; min-width: 0; min-height: 52px; border: 3px solid var(--ink); border-radius: 14px; padding: 0 14px; font: 700 17px var(--mono); color: var(--ink); background: var(--white); }
   .typer input::placeholder { color: #6b6590; font-weight: 500; }
