@@ -69,10 +69,10 @@ If axo helped your child or your class, the best support is:
 
 You don't need to write code to improve axo. Each link opens a short form:
 
-- **[Check a hint language](https://github.com/arinaesp/axo-landing/issues/new?template=1-language-check.yml).** Hints in Қазақша, Ўзбекча and Українська are still waiting for a native speaker's check.
-- **[Suggest a level or a word](https://github.com/arinaesp/axo-landing/issues/new?template=2-level-idea.yml)** that children would need to get the hero through.
-- **[Report from a class or home](https://github.com/arinaesp/axo-landing/issues/new?template=3-classroom-report.yml):** what worked and, most useful of all, where children got stuck.
-- **[Tell us something is broken](https://github.com/arinaesp/axo-landing/issues/new?template=4-bug.yml)** in the game or on the website.
+- **[Check a hint language](https://github.com/arinaesp/axolab/issues/new?template=1-language-check.yml).** Hints in Қазақша, Ўзбекча and Українська are still waiting for a native speaker's check.
+- **[Suggest a level or a word](https://github.com/arinaesp/axolab/issues/new?template=2-level-idea.yml)** that children would need to get the hero through.
+- **[Report from a class or home](https://github.com/arinaesp/axolab/issues/new?template=3-classroom-report.yml):** what worked and, most useful of all, where children got stuck.
+- **[Tell us something is broken](https://github.com/arinaesp/axolab/issues/new?template=4-bug.yml)** in the game or on the website.
 
 Issues are public, so please don't post children's names, faces, voices or usernames. Anything private goes to [hello@axolab.space](mailto:hello@axolab.space).
 
