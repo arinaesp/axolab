@@ -1,0 +1,35 @@
+name: Something is broken
+description: The game or the website doesn't work as it should.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This page is public.** Please don't post a child's name, face, voice or Telegram username, including in screenshots.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead. A screenshot helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options:
+        - In Telegram (t.me/axocoder_bot)
+        - In a browser (play.axolab.space)
+        - The website (axolab.space)
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: "e.g. iPhone 13, Telegram app; Windows laptop, Chrome"
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson or level, if in the game

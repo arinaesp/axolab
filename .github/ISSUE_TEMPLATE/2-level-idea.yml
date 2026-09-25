@@ -1,0 +1,30 @@
+name: Suggest a level or a word
+description: An idea for a new level, a new command word, or a better challenge.
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        axo teaches one English word per lesson, and the word is the move: the child types it to guide the hero. Ideas that fit that rule are the easiest to build.
+
+        **This page is public.** Please don't post a child's name, face, voice or Telegram username.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: The word or command, what it would make the hero do, and what the board could look like. A sketch or photo of a paper drawing is great.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it would help a child
+      description: For example, a word children ask for, or a step that is too big between two lessons.
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Use of your contribution
+      options:
+        - label: I agree that Arina Bolotbekova may use what I send here in axo.
+          required: true

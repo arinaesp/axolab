@@ -1,0 +1,55 @@
+name: Check a hint language
+description: You are a native speaker and something in the hints reads wrong.
+title: "[Language] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! Hints in **Қазақша, Oʻzbekcha and Українська** are still waiting for a native speaker's check, so these help the most. Every language is welcome.
+
+        **This page is public.** Please don't post a child's name, face, voice or Telegram username, including in screenshots.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Қазақша
+        - Oʻzbekcha
+        - Українська
+        - Кыргызча
+        - Русский
+        - Español
+        - Français
+        - Deutsch
+        - Italiano
+        - 中文
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where did you see it?
+      description: Lesson or zone number, and which screen (Learn card, Play board, map, settings).
+    validations:
+      required: true
+  - type: textarea
+    id: now
+    attributes:
+      label: What it says now
+      description: Copy the text, or attach a screenshot.
+    validations:
+      required: true
+  - type: textarea
+    id: better
+    attributes:
+      label: What it should say
+      description: Your wording, and if helpful, why (grammar, tone for a young child, regional word).
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Use of your contribution
+      options:
+        - label: I agree that Arina Bolotbekova may use what I send here in axo.
+          required: true

@@ -1,0 +1,48 @@
+name: Report from a class or home
+description: You used axo with children. Tell us what worked and what didn't.
+title: "[Report] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Honest reports, especially about what **didn't** work, are what makes axo better.
+
+        **This page is public.** Please don't post children's names, faces, voices or usernames. Don't name your school here unless you are happy for the name to be public. Schools that use axo in class email [hello@axolab.space](mailto:hello@axolab.space) first ([Terms §5](https://axolab.space/terms.html?lang=en)); that email is private.
+  - type: dropdown
+    id: setting
+    attributes:
+      label: Where
+      options:
+        - A school class
+        - A learning centre or club
+        - Private lessons
+        - At home
+    validations:
+      required: true
+  - type: input
+    id: ages
+    attributes:
+      label: Children's ages, and how many
+      placeholder: "e.g. 6–7, a group of 8"
+  - type: input
+    id: lessons
+    attributes:
+      label: Which lessons you used
+      placeholder: "e.g. lessons 1–6"
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked
+  - type: textarea
+    id: didnt
+    attributes:
+      label: What didn't work, or where children got stuck
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Use of your contribution
+      options:
+        - label: I agree that Arina Bolotbekova may use what I send here in axo and in research about it, without naming me.
+          required: true
