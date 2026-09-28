@@ -72,7 +72,7 @@
   .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--night); color: var(--on-night); border-bottom: 3px solid var(--ink); }
   .top-inner { display: flex; align-items: center; gap: 16px; min-height: 64px; }
   .brand { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 900; font-size: 24px; text-decoration: none; }
-  .brand img { width: 38px; }
+  .brand img { width: auto; height: 28px; }
   .nav { display: flex; gap: 4px; margin-left: auto; }
   .nav a { font-weight: 700; font-size: 15px; text-decoration: none; padding: 10px 12px; border-radius: 12px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
   .nav a:hover { background: var(--night-2); }
@@ -295,7 +295,7 @@
 
 <header class="top">
   <div class="wrap top-inner">
-    <a class="brand" href="index.html" aria-label="axo"><img src="media/home/axo.png" alt="" width="38" height="34">axo</a>
+    <a class="brand" href="index.html" aria-label="axo"><img src="media/home/axo-wordmark.png" alt="" width="96" height="28"></a>
     <nav class="nav" aria-label="Разделы" data-i18n-aria="navLabel">
       <a href="#level" data-i18n="navGame">Игра</a>
       <a href="help.html" class="help-link" data-i18n="navHelp">Как играть</a>

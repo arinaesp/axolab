@@ -1,4 +1,9 @@
-<p align="center"><img src="https://axolab.space/media/home/axo.png" alt="axo" width="140"></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="media/home/axo-wordmark.png">
+    <img src="media/home/axo-wordmark-navy.png" alt="axo" width="220">
+  </picture>
+</p>
 
 # axo
 
