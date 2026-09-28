@@ -1,8 +1,10 @@
 <p align="center">
+  <br>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="media/home/axo-wordmark.png">
     <img src="media/home/axo-wordmark-navy.png" alt="axo" width="220">
   </picture>
+  <br>
 </p>
 
 # axo
