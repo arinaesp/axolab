@@ -21,7 +21,7 @@
 
 In most language games, the words sit beside the gameplay: the child reads or hears them, then presses buttons to play. In axo, **the English word is the move.** Typing `jump` is, at one and the same time, a word in English, an action in the game and an instruction in a program. The child doesn't learn the word first and use it later: using it is how the hero gets through the level.
 
-That is the heart of **CT-DGBLL** (Computational Thinking Digital Game-Based Language Learning), the framework behind axo, created by **Arina Bolotbekova**, an IELTS & TEFL/TESOL instructor with seven years of teaching children and adults. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
+That is the heart of **English Through Logic** (formerly CT-DGBLL), the framework behind axo, created by **Arina Bolotbekova**, an IELTS & TEFL/TESOL instructor with seven years of teaching children and adults. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
 
 ## How a lesson works
 
@@ -87,4 +87,4 @@ Issues are public, so please don't post children's names, faces, voices or usern
 
 Copyright (c) 2026 Arina Bolotbekova. All rights reserved.
 
-axo (its lessons, characters, artwork, audio, code and the CT-DGBLL framework behind it) belongs to its author. **Free to use for learning and teaching, including in paid classes**, on the conditions above. It is not open source: copying, cloning, reselling or building it into another product needs written permission. Want to partner, translate or build on axo? Email [hello@axolab.space](mailto:hello@axolab.space). Full terms: [axolab.space/terms.html](https://axolab.space/terms.html?lang=en).
+axo (its lessons, characters, artwork, audio, code and the English Through Logic framework behind it) belongs to its author. **Free to use for learning and teaching, including in paid classes**, on the conditions above. It is not open source: copying, cloning, reselling or building it into another product needs written permission. Want to partner, translate or build on axo? Email [hello@axolab.space](mailto:hello@axolab.space). Full terms: [axolab.space/terms.html](https://axolab.space/terms.html?lang=en).
