@@ -34,7 +34,7 @@ Each lesson adds one new idea, and every level asks the child to use earlier wor
 
 ![A Learn card](https://axolab.space/media/home/shot-learn.jpg)
 
-The first two zones (20 levels) are ready now; new zones are on the way. How to play, screen by screen: [axolab.space/en/help.html](https://axolab.space/en/help.html)
+All four zones (40 lessons) are ready. How to play, screen by screen: [axolab.space/en/help.html](https://axolab.space/en/help.html)
 
 ## For teachers and schools
 
