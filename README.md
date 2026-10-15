@@ -30,7 +30,7 @@ Every lesson has two parts:
 - **Learn.** The child meets one new word: hears it, spells it with letter tiles, and sees what it does on the board.
 - **Play.** The child types that word, together with the words already learned, to guide the hero to the prize.
 
-Each lesson adds one new idea, and every level asks the child to use earlier words again, so vocabulary and logic build up together. There are no timers and no "game over": a wrong command simply doesn't move the hero, and the child tries again as many times as they need. Hints and captions come in 10 languages; English is always the language of the game itself.
+Each lesson adds one new idea, and every level asks the child to use earlier words again, so vocabulary and logic build up together. There is no countdown and no "game over": a wrong command simply doesn't move the hero, and the child tries again as many times as they need. Hints and captions come in 10 languages; English is always the language of the game itself.
 
 ![A Learn card](https://axolab.space/media/home/shot-learn.jpg)
 
