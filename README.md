@@ -11,7 +11,7 @@
 
 > **Just want to play?** In Telegram: [t.me/axocoder_bot](https://t.me/axocoder_bot) · In a browser: [play.axolab.space](https://play.axolab.space)
 
-**English through coding, for children aged 5–9.** A free educational game in which a child learns first English words and the logic of commands at the same time, in one activity rather than two.
+**axo – English Through Coding: a command-based approach in which children build programs from English commands, and begin computational thinking on the way.** A free game for children aged 5–9, in which a child meets first English words and the logic of commands at the same time, in one activity rather than two.
 
 **Runs on:** any phone, tablet or computer, in Telegram or any browser. The app is free: no account, no ads, no in-app purchases.
 
@@ -21,7 +21,7 @@
 
 In most language games, the words sit beside the gameplay: the child reads or hears them, then presses buttons to play. In axo, **the English word is the move.** Typing `jump` is, at one and the same time, a word in English, an action in the game and an instruction in a program. The child doesn't learn the word first and use it later: using it is how the hero gets through the level.
 
-That is the heart of **English Through Logic**, the framework behind axo, created by **Arina Bolotbekova**, an IELTS & TEFL/TESOL instructor with seven years of teaching children and adults. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
+That is the heart of **English Through Logic**, a command-based approach to language learning and the framework behind axo, created by **Arina Bolotbekova**, an IELTS & TEFL/TESOL instructor with seven years of teaching children and adults. It is built for children who don't yet know English or its alphabet, so it starts from letters and sounds and grows one word at a time.
 
 ## How a lesson works
 
